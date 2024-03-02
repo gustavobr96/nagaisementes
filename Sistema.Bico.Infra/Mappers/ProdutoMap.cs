@@ -15,6 +15,7 @@ namespace Sistema.Bico.Infra.Mappers
             builder.HasKey(x => new { x.Id }).HasName($"PK_{NOME_TABELA}");
 
             builder.Property(x => x.Quantidade).HasColumnType("decimal(18, 2)").HasColumnName("Quantidade");
+            builder.Property(x => x.Pureza).HasColumnType("decimal(2, 2)").HasColumnName("Pureza");
 
         }
     }

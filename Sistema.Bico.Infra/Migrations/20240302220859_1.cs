@@ -48,7 +48,7 @@ namespace Sistema.Bico.Infra.Migrations
                     FotoBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TipoProduto = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Pureza = table.Column<int>(type: "int", nullable: false),
+                    Pureza = table.Column<decimal>(type: "decimal(2,2)", nullable: false),
                     Tetrazolio = table.Column<int>(type: "int", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: true)

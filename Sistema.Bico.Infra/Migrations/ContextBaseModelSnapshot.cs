@@ -201,8 +201,9 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Pureza")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Pureza")
+                        .HasColumnType("decimal(2,2)")
+                        .HasColumnName("Pureza");
 
                     b.Property<decimal>("Quantidade")
                         .HasColumnType("decimal(18,2)")

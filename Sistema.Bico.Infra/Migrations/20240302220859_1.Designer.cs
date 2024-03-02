@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240302215946_1")]
+    [Migration("20240302220859_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -203,8 +203,9 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Pureza")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Pureza")
+                        .HasColumnType("decimal(2,2)")
+                        .HasColumnName("Pureza");
 
                     b.Property<decimal>("Quantidade")
                         .HasColumnType("decimal(18,2)")

@@ -9,7 +9,7 @@ namespace Sistema.Bico.Domain.Entities
         public string FotoBase64 { get; set; }
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
-        public int Pureza { get; set; }
+        public decimal Pureza { get; set; }
         public int Tetrazolio { get; set; }
 
         public void RealizarVenda(decimal quantidadeVendida)
