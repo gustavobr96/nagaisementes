@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sistema.Bico.Domain.Interface;
 using SistemaBico.API.Dtos;
@@ -34,6 +35,16 @@ namespace SistemaBico.API.Controllers
 
         [Route("listar")]
         public async Task<IActionResult> ExibirProdutos()
+        {
+            var produto = await _produtoRepository.GetAll();
+            var produtoDto = _mapper.Map<List<ProdutoDto>>(produto);
+
+
+            return View("ExibirProdutos", new ProdutoResponseRazor { Produtos = produtoDto });
+        }
+
+        [Route("registrar")]
+        public async Task<IActionResult> Registrar(ProdutoDto produtoDto2, IFormFile avatar)
         {
             var produto = await _produtoRepository.GetAll();
             var produtoDto = _mapper.Map<List<ProdutoDto>>(produto);

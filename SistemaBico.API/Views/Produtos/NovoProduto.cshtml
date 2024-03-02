@@ -1,4 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SistemaBico.API.Dtos.ProdutoDto;
 @{
     Layout = "~/Views/Shared/_layout.cshtml";
 }
@@ -26,7 +27,7 @@
                         <!--begin::Content container-->
                         <div id="kt_app_content_container" class="app-container container-xxl">
                             <!--begin::Form-->
-                            <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="apps/ecommerce/catalog/products.html">
+                            <form id="kt_ecommerce_add_product_form" action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
                                 <!--begin::Aside column-->
                                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                                     <!--begin::Thumbnail settings-->
@@ -64,7 +65,7 @@
                                                         <span class="path2"></span>
                                                     </i>
                                                     <!--begin::Inputs-->
-                                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+                                                    <input type="file"  accept=".png, .jpg, .jpeg" type="file" accept=".png, .jpg, .jpeg" asp-for="File" />
                                                     <input type="hidden" name="avatar_remove" />
                                                     <!--end::Inputs-->
                                                 </label>
@@ -121,7 +122,7 @@
                                                             <label class="required form-label">Nome do Produto</label>
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
-                                                            <input type="text" name="product_name" class="form-control mb-2" placeholder="Product name" value="" />
+                                                            <input type="text" class="form-control mb-2" placeholder="Nome do produto" name="Nome" asp-for="Nome" />
                                                             <!--end::Input-->
                                                             <!--begin::Description-->
                                                             <div class="text-muted fs-7">Um nome de produto é obrigatório e recomendado para ser exclusivo.</div>
@@ -132,9 +133,9 @@
                                                             <label class="required form-label">Tipo do Produto</label>
                                                             <!--end::Label-->
                                                             <!--begin::Select2-->
-                                                            <select class="form-select mb-2" name="tax" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção">
+                                                            <select class="form-select mb-2" name="tax" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" name="Tipo" asp-for="Tipo">
                                                                 <option></option>
-                                                                <option value="0" selected>Semente</option>
+                                                                <option value="1" selected>Semente</option>
                                                             </select>
                                                             <!--end::Select2-->
                                                             <!--begin::Description-->
@@ -147,7 +148,7 @@
                                                             <label class="required form-label">Descrição</label>
                                                             <!--end::Label-->
                                                             <!--begin::Editor-->
-                                                            <div id="kt_ecommerce_add_product_description" name="kt_ecommerce_add_product_description" class="min-h-200px mb-2"></div>
+                                                            <div id="kt_ecommerce_add_product_description" name="kt_ecommerce_add_product_description" class="min-h-200px mb-2" asp-for="Descricao"></div>
                                                             <!--end::Editor-->
                                                             <!--begin::Description-->
                                                             <div class="text-muted fs-7">Defina uma descrição do produto para melhor visibilidade..</div>
@@ -159,7 +160,7 @@
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
                                                             <div class="d-flex gap-3">
-                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 30" value="" />
+                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 30" name="Quantidade" asp-for="Quantidade" />
                                                             </div>
                                                             <!--end::Input-->
                                                             <!--begin::Description-->
@@ -170,14 +171,14 @@
                                                             <!--begin::Label-->
                                                             <label class="required form-label">Pureza (%)</label>
                                                             <div class="d-flex gap-3">
-                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 80" value="" />
+                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Pureza" asp-for="Pureza" />
                                                             </div>
                                                         </div>
                                                         <div class="mb-10 fv-row">
                                                             <!--begin::Label-->
                                                             <label class="required form-label">Tetrazólio (%)</label>
                                                             <div class="d-flex gap-3">
-                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 80" value="" />
+                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80"  name="Tetrazolio" asp-for="Tetrazolio" />
                                                             </div>
                                                         </div>
                                                         <!--begin::Input group-->
@@ -228,6 +229,29 @@
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 @section Scripts {
+    <script>
+        // Aplica a máscara aos campos Quantidade
+        $('input[name="quantidade"]').inputmask({
+            alias: 'numeric',
+            autoGroup: true,
+            groupSeparator: ',',
+            radixPoint: '.',
+            digits: 2,
+            digitsOptional: false,
+            placeholder: '0',
+        });
+
+        // Aplica a máscara aos campos Pureza
+        $('input[name="pureza"]').inputmask({
+            alias: 'numeric',
+            autoGroup: true,
+            groupSeparator: ',',
+            radixPoint: '.',
+            digits: 2,
+            digitsOptional: false,
+            placeholder: '0',
+        });
+    </script>
     <script>var hostUrl = "assets/";</script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -245,4 +269,7 @@
     <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
     <script src="assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+    <!-- Adicione essas referências ao jQuery e ao Inputmask no cabeçalho da sua página ou no layout -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }
