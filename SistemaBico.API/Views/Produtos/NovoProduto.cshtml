@@ -1,0 +1,248 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@section Head {
+    <link href="assets/css/card.css" rel="stylesheet" />
+}
+<!DOCTYPE html>
+
+<script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
+<!--end::Theme mode setup on page load-->
+<!--begin::App-->
+<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+    <!--begin::Page-->
+    <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+        <!--begin::Wrapper-->
+        <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+            <!--begin::Main-->
+            <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                <!--begin::Content wrapper-->
+                <div class="d-flex flex-column flex-column-fluid">
+                    <!--begin::Toolbar-->
+                    <!--end::Toolbar-->
+                    <!--begin::Content-->
+                    <div id="kt_app_content" class="app-content flex-column-fluid">
+                        <!--begin::Content container-->
+                        <div id="kt_app_content_container" class="app-container container-xxl">
+                            <!--begin::Form-->
+                            <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="apps/ecommerce/catalog/products.html">
+                                <!--begin::Aside column-->
+                                <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                                    <!--begin::Thumbnail settings-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Foto</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body text-center pt-0">
+                                            <!--begin::Image input-->
+                                            <!--begin::Image input placeholder-->
+                                            <style>
+                                                .image-input-placeholder {
+                                                    background-image: url('assets/media/svg/files/blank-image.svg');
+                                                }
+
+                                                [data-bs-theme="dark"] .image-input-placeholder {
+                                                    background-image: url('assets/media/svg/files/blank-image-dark.svg');
+                                                }</style>
+                                            <!--end::Image input placeholder-->
+                                            <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+                                                <!--begin::Preview existing avatar-->
+                                                <div class="image-input-wrapper w-150px h-150px"></div>
+                                                <!--end::Preview existing avatar-->
+                                                <!--begin::Label-->
+                                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                                                    <i class="ki-duotone ki-pencil fs-7">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                    <!--begin::Inputs-->
+                                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+                                                    <input type="hidden" name="avatar_remove" />
+                                                    <!--end::Inputs-->
+                                                </label>
+                                                <!--end::Label-->
+                                                <!--begin::Cancel-->
+                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+                                                    <i class="ki-duotone ki-cross fs-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </span>
+                                                <!--end::Cancel-->
+                                                <!--begin::Remove-->
+                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+                                                    <i class="ki-duotone ki-cross fs-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </span>
+                                                <!--end::Remove-->
+                                            </div>
+                                            <!--end::Image input-->
+                                            <!--begin::Description-->
+                                            <div class="text-muted fs-7">Defina a imagem em miniatura do produto. Somente arquivos de imagem *.png, *.jpg e *.jpeg são aceitos</div>
+                                            <!--end::Description-->
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Thumbnail settings-->
+                                </div>
+                                <!--end::Aside column-->
+                                <!--begin::Main column-->
+                                <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                                    <!--end:::Tabs-->
+                                    <!--begin::Tab content-->
+                                    <div class="tab-content">
+                                        <!--begin::Tab pane-->
+                                        <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general">
+                                            <div class="d-flex flex-column gap-7 gap-lg-10">
+                                                <!--begin::General options-->
+                                                <div class="card card-flush py-4">
+                                                    <!--begin::Card header-->
+                                                    <div class="card-header">
+                                                        <div class="card-title">
+                                                            <h2>Geral</h2>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Card header-->
+                                                    <!--begin::Card body-->
+                                                    <div class="card-body pt-0">
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Nome do Produto</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" name="product_name" class="form-control mb-2" placeholder="Product name" value="" />
+                                                            <!--end::Input-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Um nome de produto é obrigatório e recomendado para ser exclusivo.</div>
+                                                            <!--end::Description-->
+                                                        </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Tipo do Produto</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Select2-->
+                                                            <select class="form-select mb-2" name="tax" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção">
+                                                                <option></option>
+                                                                <option value="0" selected>Semente</option>
+                                                            </select>
+                                                            <!--end::Select2-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Selecione o tipo do produto.</div>
+                                                        </div>
+                                                        <!--end::Input group-->
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Descrição</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Editor-->
+                                                            <div id="kt_ecommerce_add_product_description" name="kt_ecommerce_add_product_description" class="min-h-200px mb-2"></div>
+                                                            <!--end::Editor-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Defina uma descrição do produto para melhor visibilidade..</div>
+                                                            <!--end::Description-->
+                                                        </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Quantidade</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <div class="d-flex gap-3">
+                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 30" value="" />
+                                                            </div>
+                                                            <!--end::Input-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Insira a quantidade do produto.</div>
+                                                            <!--end::Description-->
+                                                        </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Pureza (%)</label>
+                                                            <div class="d-flex gap-3">
+                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 80" value="" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Tetrazólio (%)</label>
+                                                            <div class="d-flex gap-3">
+                                                                <input type="number" name="shelf" class="form-control mb-2" placeholder="Ex: 80" value="" />
+                                                            </div>
+                                                        </div>
+                                                        <!--begin::Input group-->
+                                                        <!--end::Input group-->
+                                                    </div>
+                                                    <!--end::Card header-->
+                                                </div>
+                                                <!--end::General options-->
+                                            </div>
+                                        </div>
+                                        <!--end::Tab pane-->
+                                    </div>
+                                    <!--end::Tab content-->
+                                    <div class="d-flex justify-content-end">
+                                        <!--begin::Button-->
+                                        <a href="apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Limpar</a>
+                                        <!--end::Button-->
+                                        <!--begin::Button-->
+                                        <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                                            <span class="indicator-label">Salvar</span>
+                                            <span class="indicator-progress">
+                                                Please wait...
+                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                        <!--end::Button-->
+                                    </div>
+                                </div>
+                                <!--end::Main column-->
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Content container-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Content wrapper-->
+            </div>
+            <!--end:::Main-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+</div>
+<!--end::Modal - Invite Friend-->
+<!--end::Modals-->
+<!--begin::Javascript-->
+<!--end::Custom Javascript-->
+<!--end::Javascript-->
+@section Scripts {
+    <script>var hostUrl = "assets/";</script>
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js"></script>
+    <script src="assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--begin::Vendors Javascript(used for this page only)-->
+
+    <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used for this page only)-->
+    <script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+    <script src="assets/js/widgets.bundle.js"></script>
+    <script src="assets/js/custom/widgets.js"></script>
+    <script src="assets/js/custom/apps/chat/chat.js"></script>
+    <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+}

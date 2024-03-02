@@ -1,0 +1,8 @@
+﻿namespace SistemaBico.Web.Enum
+{
+    public enum TypeStatusCode
+    {
+        Ok = 200,
+        Forbidden = 403
+    }
+}
