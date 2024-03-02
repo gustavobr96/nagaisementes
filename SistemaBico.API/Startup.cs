@@ -1,4 +1,3 @@
-using EasyNetQ;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,8 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sistema.Bico.Domain.AutoMapper;
 using Sistema.Bico.Domain.Generics.Entities;
-using Sistema.Bico.Domain.Generics.Result;
-using Sistema.Bico.Domain.UseCases.Cliente;
 using Sistema.Bico.Infra.Context;
 using SistemaBico.API.Configurations;
 using System;
@@ -24,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Bico.API
 {
-    public class Startup
+	public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -65,8 +62,6 @@ namespace Sistema.Bico.API
 
             // Notification
             services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-            services.AddScoped<Domain.Generics.Interfaces.INotification, Domain.Generics.Notification.Notification>();
-            services.AddScoped<Domain.Generics.Interfaces.IResult, Result>();
 
             services.AddControllers()
                 .AddNewtonsoftJson(s =>

@@ -21,6 +21,15 @@ namespace Sistema.Bico.Domain.AutoMapper
                .ReverseMap()
                .AfterMap((src, dest) => dest.PhoneNumberConfirmed = true)
                .AfterMap((src, dest) => dest.EmailConfirmed = true);
-        }
+
+            _ = CreateMap<Produto, AddProdutoCommand>()
+                .ReverseMap();
+
+
+            _ = CreateMap<Venda, RegistrarVendaCommand>()
+                .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.ProdutoId))
+                .ForMember(dest => dest.Quandidade, opt => opt.MapFrom(src => src.QuantidadeVendida))
+				.ReverseMap();
+		}
     }
 }

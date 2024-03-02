@@ -1,8 +1,10 @@
-﻿using Sistema.Bico.Domain.Enums;
+﻿using Ardalis.Result;
+using MediatR;
+using Sistema.Bico.Domain.Enums;
 
-namespace Sistema.Bico.Domain.Entities
+namespace Sistema.Bico.Domain.Command
 {
-	public class Produto : Base
+	public class AddProdutoCommand : IRequest<Result>
 	{
 		public string Nome { get; set; }
 		public string Descricao { get; set; }
@@ -11,10 +13,5 @@ namespace Sistema.Bico.Domain.Entities
 		public int Quantidade { get; set; }
 		public int Pureza { get; set; }
 		public int Tetrazolio { get; set; }
-
-		public void RealizarVenda(int quantidadeVendida)
-		{
-		    Quantidade =  Quantidade - quantidadeVendida;
-		}
 	}
 }
