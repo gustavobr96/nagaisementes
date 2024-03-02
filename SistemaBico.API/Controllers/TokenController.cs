@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Bico.API.Controllers
 {
-	[ApiController]
+    [ApiController]
     [Route("v{version:apiVersion}/api/token")]
     public class TokenController : Controller
     {

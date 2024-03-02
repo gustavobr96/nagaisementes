@@ -21,7 +21,7 @@ namespace Sistema.Bico.Infra.Generics.Repository
             using (var data = new ContextBase(_OptionsBuilder))
             {
                 await data.Set<T>().AddAsync(entity);
-                await data.SaveChangesAsync();  
+                await data.SaveChangesAsync();
 
             }
         }

@@ -15,7 +15,7 @@ using Sistema.Bico.Infra.Repository;
 
 namespace SistemaBico.API.Configurations
 {
-	public static class InjectNative
+    public static class InjectNative
     {
         public static void AddInjectValidation(this IServiceCollection services)
         {
@@ -25,20 +25,20 @@ namespace SistemaBico.API.Configurations
         public static void AddInjectHandlers(this IServiceCollection services)
         {
             services.AddScoped<IRequestHandler<AddClientCommand, Unit>, RegisterClientCommandHandler>();
-			services.AddScoped<IRequestHandler<AddProdutoCommand, Result>, RegistrarProdutoCommandHandler>();
-			services.AddScoped<IRequestHandler<RegistrarVendaCommand, Result>, RegistrarVendaCommandHandler>();
-		}
+            services.AddScoped<IRequestHandler<AddProdutoCommand, Result>, RegistrarProdutoCommandHandler>();
+            services.AddScoped<IRequestHandler<RegistrarVendaCommand, Result>, RegistrarVendaCommandHandler>();
+        }
 
         public static void AddInjectRepositorys(this IServiceCollection services)
         {
-     
+
             services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
             services.AddScoped<IToken, Token>();
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IIdentityRepository, IdentityRepository>();
-			services.AddScoped<IProdutoRepository, ProdutoRepository>();
-			services.AddScoped<IVendaRepository, VendaRepository>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IVendaRepository, VendaRepository>();
 
-		}
+        }
     }
 }

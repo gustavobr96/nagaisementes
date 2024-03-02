@@ -3,19 +3,19 @@ using Microsoft.Extensions.Logging;
 
 namespace SistemaBico.API.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
 
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
 
-		public IActionResult Index()
-		{
-			return RedirectToAction("index", "Login", new { area = "" });
-		}
+        public IActionResult Index()
+        {
+            return RedirectToAction("index", "Login", new { area = "" });
+        }
 
-	}
+    }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Generics.Interfaces;
 using Sistema.Bico.Domain.Interface;
 using Sistema.Bico.Domain.Response;
@@ -23,7 +22,7 @@ namespace Sistema.Bico.Domain.Generics.Entities
         private const int ExpirationHours = 24;
 
         public Token(UserManager<ApplicationUser> userManager,
-            IClientRepository clientRepository )
+            IClientRepository clientRepository)
         {
             _userManager = userManager;
             _clientRepository = clientRepository;

@@ -29,14 +29,5 @@ namespace Sistema.Bico.Infra.Context
 
             base.OnModelCreating(builder);
         }
-
-
-        private string GetStringConectionConfig()
-        {
-            string strCon = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Agro;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-
-            return strCon;
-        }
-
     }
 }

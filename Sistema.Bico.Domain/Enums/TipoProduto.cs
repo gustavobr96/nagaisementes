@@ -2,9 +2,9 @@
 
 namespace Sistema.Bico.Domain.Enums
 {
-	public enum TipoProduto
-	{
-		[Description("Semente")]
-		SEMENTE = 1
-	}
+    public enum TipoProduto
+    {
+        [Description("Semente")]
+        SEMENTE = 1
+    }
 }

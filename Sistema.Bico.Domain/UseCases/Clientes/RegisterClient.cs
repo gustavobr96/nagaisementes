@@ -25,7 +25,7 @@ namespace Sistema.Bico.Domain.UseCases.Cliente
         {
             var client = _mapper.Map<Client>(request);
             var identity = _mapper.Map<ApplicationUser>(request);
-            
+
             // Set infos
             client.Email = identity.Email;
             identity.Client = client;

@@ -8,7 +8,7 @@ namespace Sistema.Bico.Domain.Generics.Extensions
     {
         public static string GetDescription(this Enum value)
         {
-            if(value != null)
+            if (value != null)
             {
                 var fi = value.GetType().GetField(value.ToString());
                 var attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
@@ -16,7 +16,7 @@ namespace Sistema.Bico.Domain.Generics.Extensions
             }
 
             return "";
-          
+
         }
     }
 }

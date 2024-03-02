@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sistema.Bico.Domain.AutoMapper;
@@ -22,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Bico.API
 {
-	public class Startup
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -39,17 +38,17 @@ namespace Sistema.Bico.API
                   Configuration.GetConnectionString("DefaultConnection")));
 
 
-            services.AddDefaultIdentity<ApplicationUser>(options => 
-            { 
-              options.SignIn.RequireConfirmedAccount = false;
-              options.SignIn.RequireConfirmedPhoneNumber = false;
+            services.AddDefaultIdentity<ApplicationUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
 
-              options.Password.RequireDigit = false;
-              options.Password.RequireLowercase = false;
-              options.Password.RequireNonAlphanumeric = false;
-              options.Password.RequireUppercase = false;
-              options.Password.RequiredLength = 6;
-              options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
 
             }).AddEntityFrameworkStores<ContextBase>();
 
@@ -60,10 +59,10 @@ namespace Sistema.Bico.API
             services.AddInjectHandlers();
 
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
-			services.AddAutoMapper(typeof(AutoMapperInterface).Assembly);
+            services.AddAutoMapper(typeof(AutoMapperInterface).Assembly);
 
-			// Notification
-			services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            // Notification
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
 
             services.AddControllers()
                 .AddNewtonsoftJson(s =>
@@ -154,7 +153,7 @@ namespace Sistema.Bico.API
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
 
-          
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

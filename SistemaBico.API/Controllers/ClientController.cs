@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBico.API.Controllers
 {
-	[Authorize]
+    [Authorize]
     [ApiController]
     [Route("v{version:apiVersion}/api/client")]
     public class ClientController : ControllerBase

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Sistema.Bico.Domain.Entities
 {
-	public class Client : Base
+    public class Client : Base
     {
-        public string Name { get;  set; }
-        public string Email { get;  set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
 
-		public virtual ICollection<ApplicationUser> ApplicationUser { get; set; }
-	}
+        public virtual ICollection<ApplicationUser> ApplicationUser { get; set; }
+    }
 }

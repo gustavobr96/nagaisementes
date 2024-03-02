@@ -14,7 +14,7 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dest => dest.TipoProduto,
                     opt => opt.MapFrom(src => src.TipoProduto != null ? src.TipoProduto.GetDescription() : null))
                 .ForMember(dest => dest.FotoBase64,
-                    opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FotoBase64) ? IMAGEM_PADRAO  : src.FotoBase64))
+                    opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FotoBase64) ? IMAGEM_PADRAO : src.FotoBase64))
                 .ForMember(dest => dest.DataCadastro,
                     opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")));
         }

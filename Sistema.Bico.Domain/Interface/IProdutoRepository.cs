@@ -4,7 +4,7 @@ using Sistema.Bico.Domain.Generics.Interfaces;
 namespace Sistema.Bico.Domain.Interface
 {
 
-	public interface IProdutoRepository : IGeneric<Produto>
-	{
-	}
+    public interface IProdutoRepository : IGeneric<Produto>
+    {
+    }
 }
