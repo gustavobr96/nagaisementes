@@ -38,10 +38,22 @@ var KTSigninGeneral = function () {
             submitButton.addEventListener("click", function () {
                 formValidation.validate().then(function (status) {
                     if (status === "Valid") {
+                        // Adicionar um indicador de carregamento
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Entrando...';
+
+                        // Desativar o botão durante o envio
+                        submitButton.setAttribute("disabled", true);
+
                         // Se a validação for bem-sucedida, envie o formulário manualmente
                         form.submit();
                     } else {
                         // Se houver erros, deixe o formulário seguir seu fluxo padrão
+
+                        // Remover o indicador de carregamento
+                        submitButton.innerHTML = 'Entrar';
+
+                        // Habilitar o botão
+                        submitButton.removeAttribute("disabled");
                     }
                 });
             });

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sistema.Bico.Domain.AutoMapper;
@@ -59,9 +60,10 @@ namespace Sistema.Bico.API
             services.AddInjectHandlers();
 
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+			services.AddAutoMapper(typeof(AutoMapperInterface).Assembly);
 
-            // Notification
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+			// Notification
+			services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
 
             services.AddControllers()
                 .AddNewtonsoftJson(s =>

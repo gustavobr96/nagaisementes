@@ -6,6 +6,6 @@ namespace Sistema.Bico.Domain.Entities
 	{
 		public Venda Produto { get; set; }
 		public Guid ProdutoId { get; set; }
-		public int QuantidadeVendida { get; set; }
+		public decimal QuantidadeVendida { get; set; }
 	}
 }

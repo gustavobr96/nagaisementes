@@ -15,15 +15,11 @@ namespace Sistema.Bico.Infra.Context
         public DbSet<Venda> Venda { get; set; }
         public DbSet<Produto> Produto { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(GetStringConectionConfig());
-                base.OnConfiguring(optionsBuilder);
-            }
+            base.OnConfiguring(optionsBuilder); // Mova esta linha para fora do bloco condicional
         }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ClientMap());

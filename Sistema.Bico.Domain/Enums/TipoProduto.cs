@@ -4,7 +4,7 @@ namespace Sistema.Bico.Domain.Enums
 {
 	public enum TipoProduto
 	{
-		[Description("Sementes")]
+		[Description("Semente")]
 		SEMENTE = 1
 	}
 }
