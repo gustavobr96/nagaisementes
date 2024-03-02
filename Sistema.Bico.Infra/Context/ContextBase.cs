@@ -15,11 +15,16 @@ namespace Sistema.Bico.Infra.Context
         public DbSet<Venda> Venda { get; set; }
         public DbSet<Produto> Produto { get; set; }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder); // Mova esta linha para fora do bloco condicional
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(GetStringConectionConfig());
+                base.OnConfiguring(optionsBuilder);
+            }
         }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ClientMap());
@@ -28,6 +33,13 @@ namespace Sistema.Bico.Infra.Context
             builder.ApplyConfiguration(new VendaMap());
 
             base.OnModelCreating(builder);
+        }
+
+        private string GetStringConectionConfig()
+        {
+            string strCon = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Agro;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+
+            return strCon;
         }
     }
 }

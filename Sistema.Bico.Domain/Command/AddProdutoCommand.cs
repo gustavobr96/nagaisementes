@@ -10,7 +10,7 @@ namespace Sistema.Bico.Domain.Command
         public string Descricao { get; set; }
         public string FotoBase64 { get; set; }
         public TipoProduto TipoProduto { get; set; }
-        public int Quantidade { get; set; }
+        public decimal Quantidade { get; set; }
         public int Pureza { get; set; }
         public int Tetrazolio { get; set; }
     }

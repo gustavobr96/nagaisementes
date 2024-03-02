@@ -34,8 +34,8 @@ namespace Sistema.Bico.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ContextBase>(options =>
-              options.UseSqlServer(
-                  Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Sistema.Bico.Infra")));
+
 
 
             services.AddDefaultIdentity<ApplicationUser>(options =>

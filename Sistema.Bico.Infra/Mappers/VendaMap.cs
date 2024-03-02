@@ -14,6 +14,10 @@ namespace Sistema.Bico.Infra.Mappers
             builder.ToTable(NOME_TABELA);
 
             builder.HasKey(x => new { x.Id }).HasName($"PK_{NOME_TABELA}");
+
+            builder.Property(x => x.QuantidadeVendida) .HasColumnType("decimal(18, 2)").HasColumnName("QuantidadeVendida");
+            
+            builder.HasOne(x => x.Produto).WithMany().HasForeignKey(x => x.ProdutoId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
