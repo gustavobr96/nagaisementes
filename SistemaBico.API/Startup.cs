@@ -16,6 +16,7 @@ using Sistema.Bico.Infra.Context;
 using SistemaBico.API.Configurations;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -35,8 +36,6 @@ namespace Sistema.Bico.API
         {
             services.AddDbContext<ContextBase>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Sistema.Bico.Infra")));
-
-
 
             services.AddDefaultIdentity<ApplicationUser>(options =>
             {

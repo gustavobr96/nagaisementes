@@ -1,4 +1,5 @@
 ﻿using Sistema.Bico.Domain.Enums;
+using System;
 
 namespace Sistema.Bico.Domain.Entities
 {
@@ -6,11 +7,14 @@ namespace Sistema.Bico.Domain.Entities
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public string FotoBase64 { get; set; }
+        public string Observacao { get; set; }
+        public byte[] FotoBase64 { get; set; }
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Pureza { get; set; }
         public int Tetrazolio { get; set; }
+        public Guid FornecedorId { get; set; }
+        public Fornecedor Fornecedor { get; set; }
 
         public void RealizarVenda(decimal quantidadeVendida)
         {

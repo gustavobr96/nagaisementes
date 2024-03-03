@@ -8,7 +8,7 @@ namespace Sistema.Bico.Domain.Command
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public string FotoBase64 { get; set; }
+        public byte[] FotoBase64 { get; set; }
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Pureza { get; set; }

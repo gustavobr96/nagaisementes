@@ -27,7 +27,7 @@
                         <!--begin::Content container-->
                         <div id="kt_app_content_container" class="app-container container-xxl">
                             <!--begin::Form-->
-                            <form id="kt_ecommerce_add_product_form" action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+                            <form id="kt_ecommerce_add_product_form" action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" method="post" novalidate="novalidate" enctype="multipart/form-data">
                                 <!--begin::Aside column-->
                                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                                     <!--begin::Thumbnail settings-->
@@ -47,7 +47,7 @@
                                             <!--begin::Image input placeholder-->
                                             <style>
                                                 .image-input-placeholder {
-                                                    background-image: url('assets/media/svg/files/blank-image.svg');
+                                                    background-image: url('assets/media/users/default.jpg');
                                                 }
 
                                                 [data-bs-theme="dark"] .image-input-placeholder {
@@ -60,32 +60,24 @@
                                                 <!--end::Preview existing avatar-->
                                                 <!--begin::Label-->
                                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                                    <i class="ki-duotone ki-pencil fs-7">
+                                                    <i class="fa fa-pen icon-sm text-muted">
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
                                                     <!--begin::Inputs-->
-                                                    <input type="file"  accept=".png, .jpg, .jpeg" type="file" accept=".png, .jpg, .jpeg" asp-for="File" />
-                                                    <input type="hidden" name="avatar_remove" />
+                                                    <input type="file" accept=".png, .jpg, .jpeg" asp-for="File" />
+                                                    <input type="hidden" name="profile_avatar_remove" />
                                                     <!--end::Inputs-->
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Cancel-->
                                                 <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                                    <i class="ki-duotone ki-cross fs-2">
+                                                    <i class="ki ki-bold-close icon-xs text-muted">
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
                                                 </span>
                                                 <!--end::Cancel-->
-                                                <!--begin::Remove-->
-                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                                    <i class="ki-duotone ki-cross fs-2">
-                                                        <span class="path1"></span>
-                                                        <span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                                <!--end::Remove-->
                                             </div>
                                             <!--end::Image input-->
                                             <!--begin::Description-->
@@ -110,7 +102,7 @@
                                                     <!--begin::Card header-->
                                                     <div class="card-header">
                                                         <div class="card-title">
-                                                            <h2>Geral</h2>
+                                                            <h1>Cadastro de Produtos</h1>
                                                         </div>
                                                     </div>
                                                     <!--end::Card header-->
@@ -122,7 +114,7 @@
                                                             <label class="required form-label">Nome do Produto</label>
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
-                                                            <input type="text" class="form-control mb-2" placeholder="Nome do produto" name="Nome" asp-for="Nome" />
+                                                            <input type="text" class="form-control mb-2" placeholder="Nome do produto" name="Nome" asp-for="Nome" id="Nome" />
                                                             <!--end::Input-->
                                                             <!--begin::Description-->
                                                             <div class="text-muted fs-7">Um nome de produto é obrigatório e recomendado para ser exclusivo.</div>
@@ -133,7 +125,7 @@
                                                             <label class="required form-label">Tipo do Produto</label>
                                                             <!--end::Label-->
                                                             <!--begin::Select2-->
-                                                            <select class="form-select mb-2" name="tax" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" name="Tipo" asp-for="Tipo">
+                                                            <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" id="Tipo" name="Tipo" asp-for="Tipo">
                                                                 <option></option>
                                                                 <option value="1" selected>Semente</option>
                                                             </select>
@@ -148,7 +140,7 @@
                                                             <label class="required form-label">Descrição</label>
                                                             <!--end::Label-->
                                                             <!--begin::Editor-->
-                                                            <div id="kt_ecommerce_add_product_description" name="kt_ecommerce_add_product_description" class="min-h-200px mb-2" asp-for="Descricao"></div>
+                                                            <textarea class="form-control" name="Descricao" maxlength="300" placeholder="" asp-for="Descricao" rows="6" id="Descricao"></textarea>
                                                             <!--end::Editor-->
                                                             <!--begin::Description-->
                                                             <div class="text-muted fs-7">Defina uma descrição do produto para melhor visibilidade..</div>
@@ -157,29 +149,17 @@
                                                         <div class="mb-10 fv-row">
                                                             <!--begin::Label-->
                                                             <label class="required form-label">Quantidade</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Input-->
-                                                            <div class="d-flex gap-3">
-                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 30" name="Quantidade" asp-for="Quantidade" />
-                                                            </div>
-                                                            <!--end::Input-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Insira a quantidade do produto.</div>
-                                                            <!--end::Description-->
+                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 30" name="Quantidade" asp-for="Quantidade" id="Quantidade" />
                                                         </div>
                                                         <div class="mb-10 fv-row">
                                                             <!--begin::Label-->
                                                             <label class="required form-label">Pureza (%)</label>
-                                                            <div class="d-flex gap-3">
-                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Pureza" asp-for="Pureza" />
-                                                            </div>
+                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Pureza" asp-for="Pureza" id="Pureza" maxlength="5" />
                                                         </div>
                                                         <div class="mb-10 fv-row">
                                                             <!--begin::Label-->
                                                             <label class="required form-label">Tetrazólio (%)</label>
-                                                            <div class="d-flex gap-3">
-                                                                <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80"  name="Tetrazolio" asp-for="Tetrazolio" />
-                                                            </div>
+                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Tetrazolio" asp-for="Tetrazolio" id="Tetrazolio" maxlength="3" />
                                                         </div>
                                                         <!--begin::Input group-->
                                                         <!--end::Input group-->
@@ -194,7 +174,7 @@
                                     <!--end::Tab content-->
                                     <div class="d-flex justify-content-end">
                                         <!--begin::Button-->
-                                        <a href="apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Limpar</a>
+                                        <a asp-area="" asp-controller="Produtos" asp-action="listar" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Voltar</a>
                                         <!--end::Button-->
                                         <!--begin::Button-->
                                         <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -229,29 +209,6 @@
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 @section Scripts {
-    <script>
-        // Aplica a máscara aos campos Quantidade
-        $('input[name="quantidade"]').inputmask({
-            alias: 'numeric',
-            autoGroup: true,
-            groupSeparator: ',',
-            radixPoint: '.',
-            digits: 2,
-            digitsOptional: false,
-            placeholder: '0',
-        });
-
-        // Aplica a máscara aos campos Pureza
-        $('input[name="pureza"]').inputmask({
-            alias: 'numeric',
-            autoGroup: true,
-            groupSeparator: ',',
-            radixPoint: '.',
-            digits: 2,
-            digitsOptional: false,
-            placeholder: '0',
-        });
-    </script>
     <script>var hostUrl = "assets/";</script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -269,6 +226,7 @@
     <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
     <script src="assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="~/js/novoProduto.js"></script>
     <!-- Adicione essas referências ao jQuery e ao Inputmask no cabeçalho da sua página ou no layout -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>

@@ -8,6 +8,7 @@ using Sistema.Bico.Domain.Generics.Entities;
 using Sistema.Bico.Domain.Generics.Interfaces;
 using Sistema.Bico.Domain.Interface;
 using Sistema.Bico.Domain.UseCases.Cliente;
+using Sistema.Bico.Domain.UseCases.Fornecedores;
 using Sistema.Bico.Domain.UseCases.Produtos;
 using Sistema.Bico.Domain.UseCases.Vendas;
 using Sistema.Bico.Infra.Generics.Repository;
@@ -27,6 +28,7 @@ namespace SistemaBico.API.Configurations
             services.AddScoped<IRequestHandler<AddClientCommand, Unit>, RegisterClientCommandHandler>();
             services.AddScoped<IRequestHandler<AddProdutoCommand, Result>, RegistrarProdutoCommandHandler>();
             services.AddScoped<IRequestHandler<RegistrarVendaCommand, Result>, RegistrarVendaCommandHandler>();
+            services.AddScoped<IRequestHandler<AddFornecedorCommand, Result>, RegistrarFornecedorHandler>();
         }
 
         public static void AddInjectRepositorys(this IServiceCollection services)
@@ -38,6 +40,7 @@ namespace SistemaBico.API.Configurations
             services.AddScoped<IIdentityRepository, IdentityRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
+            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 
         }
     }

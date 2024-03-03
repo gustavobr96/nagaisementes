@@ -183,6 +183,33 @@ namespace Sistema.Bico.Infra.Migrations
                     b.ToTable("Client", (string)null);
                 });
 
+            modelBuilder.Entity("Sistema.Bico.Domain.Entities.Fornecedor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CpfCnpj")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Update")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Fornecedor");
+
+                    b.ToTable("Fornecedor", (string)null);
+                });
+
             modelBuilder.Entity("Sistema.Bico.Domain.Entities.Produto", b =>
                 {
                     b.Property<Guid>("Id")
@@ -195,14 +222,20 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FotoBase64")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("FornecedorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("FotoBase64")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Observacao")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Pureza")
-                        .HasColumnType("decimal(2,2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasColumnName("Pureza");
 
                     b.Property<decimal>("Quantidade")
@@ -220,6 +253,8 @@ namespace Sistema.Bico.Infra.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK_Produto");
+
+                    b.HasIndex("FornecedorId");
 
                     b.ToTable("Produto", (string)null);
                 });
@@ -242,6 +277,10 @@ namespace Sistema.Bico.Infra.Migrations
 
                     b.Property<DateTime?>("Update")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Valor");
 
                     b.HasKey("Id")
                         .HasName("PK_Venda");
@@ -373,9 +412,20 @@ namespace Sistema.Bico.Infra.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Sistema.Bico.Domain.Entities.Produto", b =>
+                {
+                    b.HasOne("Sistema.Bico.Domain.Entities.Fornecedor", "Fornecedor")
+                        .WithMany()
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Fornecedor");
+                });
+
             modelBuilder.Entity("Sistema.Bico.Domain.Entities.Venda", b =>
                 {
-                    b.HasOne("Sistema.Bico.Domain.Entities.Venda", "Produto")
+                    b.HasOne("Sistema.Bico.Domain.Entities.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Restrict)

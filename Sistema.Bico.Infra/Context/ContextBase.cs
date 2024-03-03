@@ -14,6 +14,7 @@ namespace Sistema.Bico.Infra.Context
         public DbSet<Client> Client { get; set; }
         public DbSet<Venda> Venda { get; set; }
         public DbSet<Produto> Produto { get; set; }
+        public DbSet<Fornecedor> Fornecedor { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,6 +32,7 @@ namespace Sistema.Bico.Infra.Context
             builder.ApplyConfiguration(new ApplicationUserMap());
             builder.ApplyConfiguration(new ProdutoMap());
             builder.ApplyConfiguration(new VendaMap());
+            builder.ApplyConfiguration(new FornecedorMap());
 
             base.OnModelCreating(builder);
         }

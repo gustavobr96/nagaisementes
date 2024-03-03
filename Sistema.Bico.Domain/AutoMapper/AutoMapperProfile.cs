@@ -32,6 +32,8 @@ namespace Sistema.Bico.Domain.AutoMapper
                 .ForMember(dest => dest.Quandidade, opt => opt.MapFrom(src => src.QuantidadeVendida))
                 .ReverseMap();
 
+            _ = CreateMap<Fornecedor, AddFornecedorCommand>()
+               .ReverseMap();
         }
     }
 }

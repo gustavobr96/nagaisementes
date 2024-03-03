@@ -5,6 +5,7 @@ using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
