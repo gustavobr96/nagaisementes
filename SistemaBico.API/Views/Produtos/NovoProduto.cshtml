@@ -1,12 +1,13 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model SistemaBico.API.Dtos.ProdutoDto;
 @{
+    ViewData["Title"] = "Cadastro de Produtos";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 @section Head {
-    <link href="assets/css/card.css" rel="stylesheet" />
+    <link href="Site/Site/assets/css/card.css" rel="stylesheet" />
 }
-<!DOCTYPE html>
+
 
 <script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
 <!--end::Theme mode setup on page load-->
@@ -47,11 +48,11 @@
                                             <!--begin::Image input placeholder-->
                                             <style>
                                                 .image-input-placeholder {
-                                                    background-image: url('assets/media/users/default.jpg');
+                                                    background-image: url('Site/assets/media/users/default.jpg');
                                                 }
 
                                                 [data-bs-theme="dark"] .image-input-placeholder {
-                                                    background-image: url('assets/media/svg/files/blank-image-dark.svg');
+                                                    background-image: url('Site/assets/media/svg/files/blank-image-dark.svg');
                                                 }</style>
                                             <!--end::Image input placeholder-->
                                             <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
@@ -133,6 +134,28 @@
                                                             <!--begin::Description-->
                                                             <div class="text-muted fs-7">Selecione o tipo do produto.</div>
                                                         </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Selecione o Fornecedor</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Select2-->
+                                                            <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" id="FornecedorId" name="FornecedorId" asp-for="FornecedorId">
+                                                            </select>
+                                                            <!--end::Select2-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Selecione o fornecedor.</div>
+                                                        </div>
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Observação</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" class="form-control mb-2" placeholder="Digite uma observação" name="Observacao" asp-for="Observacao" id="Observacao" maxlength="40" />
+                                                            <!--end::Input-->
+                                                            <!--begin::Description-->
+                                                            <div class="text-muted fs-7">Digite uma observação desse produto ex: Produto contém praga.</div>
+                                                            <!--end::Description-->
+                                                        </div>
                                                         <!--end::Input group-->
                                                         <!--begin::Input group-->
                                                         <div class="mb-10 fv-row">
@@ -209,23 +232,23 @@
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 @section Scripts {
-    <script>var hostUrl = "assets/";</script>
+    <script>var hostUrl = "Site/assets/";</script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script src="Site/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="Site/assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
 
-    <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+    <script src="Site/assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
-    <script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
-    <script src="assets/js/widgets.bundle.js"></script>
-    <script src="assets/js/custom/widgets.js"></script>
-    <script src="assets/js/custom/apps/chat/chat.js"></script>
-    <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="assets/js/custom/utilities/modals/create-app.js"></script>
-    <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="Site/assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+    <script src="Site/assets/js/widgets.bundle.js"></script>
+    <script src="Site/assets/js/custom/widgets.js"></script>
+    <script src="Site/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="Site/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="Site/assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="Site/assets/js/custom/utilities/modals/users-search.js"></script>
     <script src="~/js/novoProduto.js"></script>
     <!-- Adicione essas referências ao jQuery e ao Inputmask no cabeçalho da sua página ou no layout -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

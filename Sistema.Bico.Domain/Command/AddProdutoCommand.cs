@@ -1,6 +1,7 @@
 ﻿using Ardalis.Result;
 using MediatR;
 using Sistema.Bico.Domain.Enums;
+using System;
 
 namespace Sistema.Bico.Domain.Command
 {
@@ -12,6 +13,8 @@ namespace Sistema.Bico.Domain.Command
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Pureza { get; set; }
+        public Guid FornecedorId { get; set; }
+        public string Observacao { get; set; }
         public int Tetrazolio { get; set; }
     }
 }

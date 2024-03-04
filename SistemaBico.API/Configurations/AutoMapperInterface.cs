@@ -16,12 +16,14 @@ namespace SistemaBico.API.Configurations
             _ = CreateMap<Produto, ProdutoDto>()
                 .ForMember(dest => dest.TipoProduto, opt => opt.MapFrom(src => src.TipoProduto != null ? src.TipoProduto.GetDescription() : null))
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.FotoBase64.Length > 0 ? Convert.ToBase64String(src.FotoBase64) : IMAGEM_PADRAO))
-                .ForMember(dest => dest.DataCadastro,opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")));
+                .ForMember(dest => dest.DataCadastro, opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")))
+                .ForMember(dest => dest.FornecedorName, opt => opt.MapFrom(src => src.Fornecedor.Nome));
 
 
             _ = CreateMap<ProdutoDto, AddProdutoCommand>()
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.File != null ? ConvertGeneric.IFormFileToBase64(src.File) : null))
-                .ForMember(dst => dst.TipoProduto, map => map.MapFrom(src => src.Tipo));
+                .ForMember(dst => dst.TipoProduto, map => map.MapFrom(src => src.Tipo))
+                .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)));
 
             _ = CreateMap<Fornecedor, FornecedorDto >();
             _ = CreateMap<FornecedorDto, AddFornecedorCommand>();

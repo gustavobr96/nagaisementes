@@ -1,0 +1,17 @@
+#minhaTabela_filter {
+    text-align: center; /* Centraliza o campo de pesquisa */
+}
+
+    #minhaTabela_filter label {
+        display: none; /* Oculta o rótulo original */
+    }
+
+    #minhaTabela_filter input {
+        width: 200px; /* Ajuste a largura conforme necessário */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-style: italic;
+        color: #888; /* Cor do texto no input */
+    }

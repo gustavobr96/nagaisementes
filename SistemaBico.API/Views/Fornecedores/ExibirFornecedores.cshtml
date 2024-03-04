@@ -1,10 +1,4 @@
-﻿@model SistemaBico.API.Dtos.ResponseRazor.ListResponseRazor;
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("pt-BR");
-    Layout = "~/Views/Shared/_layout.cshtml";
-}
-<div id="kt_app_content_container" class="app-container container-xxl">
+﻿<div id="kt_app_content_container" class="app-container container-sm">
     <div class="card card-flush">
         <div class="card-body pt-0">
             <div class="card-header align-items-center py-5 gap-2 gap-md-5">
@@ -61,7 +55,7 @@
                                         <!--end::Thumbnail-->
                                         <div class="ms-5">
                                             <!--begin::Title-->
-                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">@item.Nome</a>
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><span class="fw-bold">@item.Nome</span></a>
                                             <!--end::Title-->
                                         </div>
                                     </div>
@@ -89,7 +83,7 @@
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                            <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Excluir</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>

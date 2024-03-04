@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\.github\codeql\codeql-config.yml" />
+    <None Include="wwwroot\.github\CONTRIBUTING.md" />
+    <None Include="wwwroot\.github\dependabot.yml" />
+    <None Include="wwwroot\.github\ISSUE_TEMPLATE\bug-report-for-adminlte-v3.1-x.md" />
+    <None Include="wwwroot\.github\ISSUE_TEMPLATE\feature-request-for-adminlte-v4-x.md" />
+    <None Include="wwwroot\.github\workflows\ci.yml" />
+    <None Include="wwwroot\.github\workflows\codeql.yml" />
+    <None Include="wwwroot\.github\workflows\docs.yml" />
+    <None Include="wwwroot\.github\workflows\lint.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="EasyNetQ" Version="7.3.7" />

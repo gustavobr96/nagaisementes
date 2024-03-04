@@ -70,7 +70,7 @@ namespace SistemaBico.API.Controllers
 
         private async Task<List<Produto>> ObterProdutos()
         {
-            return await _produtoRepository.GetAll();
+            return await _produtoRepository.ObterTodosProdutoEFornecedor();
         }
     }
 }

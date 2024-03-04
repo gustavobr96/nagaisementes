@@ -63,7 +63,9 @@ namespace SistemaBico.API.Controllers
                 return RedirectToAction("Index", "Erro", new { area = "" });
             }
         }
-        private async Task<List<Fornecedor>> ObterFornecedores()
+
+        [HttpGet("ObterFornecedores")]
+        public async Task<List<Fornecedor>> ObterFornecedores()
         {
             return await _fornecedorRepository.GetAll();
         }
