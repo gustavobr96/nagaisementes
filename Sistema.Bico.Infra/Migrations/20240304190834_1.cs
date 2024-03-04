@@ -120,6 +120,7 @@ namespace Sistema.Bico.Infra.Migrations
                     Quantidade = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Pureza = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Tetrazolio = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
                     FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: true)

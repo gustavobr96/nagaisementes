@@ -23,9 +23,8 @@
         rightAlign: false
     });
 
-
     // Ao enviar o formulário
-    $('#kt_ecommerce_add_product_form').submit(function (event) {
+    $('#RegistrarProdutos').submit(function (event) {
         // Resetar mensagens de erro
         $('.error-message').remove();
 
@@ -78,5 +77,5 @@
         }
     });
 
-    carregarFornecedores();
 });
+

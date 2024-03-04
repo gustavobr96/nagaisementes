@@ -1,0 +1,49 @@
+﻿/* estiloDataTable.css */
+
+/* Estilo da tabela */
+#tabelaExemplo {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 14px;
+}
+
+    #tabelaExemplo th,
+    #tabelaExemplo td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    #tabelaExemplo th {
+        background-color: #f2f2f2;
+    }
+
+    /* Estilo de hover nas linhas */
+    #tabelaExemplo tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* Estilo de zebra nas linhas */
+    #tabelaExemplo tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+/* Estilo da barra de pesquisa */
+div.dataTables_wrapper div.dataTables_filter input {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+/* Estilo dos botões de navegação */
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    border-radius: 5px;
+}
+
+/* Estilo da seleção de itens por página */
+div.dataTables_wrapper div.dataTables_length select {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 8px;
+}

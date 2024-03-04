@@ -53,7 +53,7 @@ namespace SistemaBico.API.Controllers
                 {
                     var fornecedores = await ObterFornecedores();
                     var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
-                    return View("ExibirFornecedores", new ListResponseRazor { Fornecedores = fornecedoresDto });
+                    return RedirectToAction("ExibirFornecedores", new { fornecedoresDto });
                 }
 
                 return RedirectToAction("Index", "Erro", new { area = "" });

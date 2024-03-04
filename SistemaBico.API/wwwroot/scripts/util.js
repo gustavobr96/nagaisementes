@@ -1,16 +1,6 @@
 ﻿/**
  * Script responsável por métodos padrões e validações
 */
-document.addEventListener("DOMContentLoaded", function () {
-    $('.maskData').mask('00/00/0000');
-    $('.maskTelefone').mask('99999999999');
-    $('.maskTel').mask('0000-00009');
-    $('.maskDdd').mask('99');
-    $('.maskCnpj').mask('00.000.000/0000-00');
-    $('.maskCpf').mask('000.000.000-00');
-    $('.maskCep').mask('00000-000');
-    $('.maskMesAno').mask('00/0000');
-});
 
 function Alerta(divId, msg) {
     $("#" + divId).html(msg);

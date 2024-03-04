@@ -1,7 +1,7 @@
 ﻿@model SistemaBico.API.Dtos.ResponseRazor.ListResponseRazor;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "Cadastro Cliente";
+    ViewData["Title"] = "Cadastro de Produtos";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
@@ -23,9 +23,9 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Qtd</th>
-                        <th scope="col">Pureza</th>
-                        <th scope="col">Tetrazólio</th>
+                        <th scope="col">Qtd de Pontos</th>
+                        <th scope="col">Pureza(%)</th>
+                        <th scope="col">Tetrazólio(%)</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Observação</th>
                         <th scope="col">Data</th>
@@ -39,24 +39,54 @@
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
                             <td>@item.Quantidade</td>
-                            <td>@item.Pureza</td>
-                            <td>@item.Tetrazolio</td>
+                            <td>@item.Pureza%</td>
+                            <td>@item.Tetrazolio%</td>
                             <td>@item.FornecedorName</td>
                             <td>@item.Observacao</td>
                             <td>@item.DataCadastro</td>
                             <td>
-                                <button class="btn btn-icon btn-primary" id="btnAlterar" onclick="Alterar('${dado.id}')"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-icon btn-danger" id="btnRemover" onclick="Remover('${dado.id}')"><i class="fa fa-trash"></i></button>
+                             <button class="btn btn-icon btn-primary" id="btnAlterar" onclick="Alterar('${dado.id}')"><i class="fa fa-edit"></i></button>
+                             @if(item.Ativo)
+                             {
+                               <button class="btn btn-icon btn-danger" id="btnR" onclick="AtivarDesativar('@item.ProdutoId')"><i class="fa fa-trash"></i></button>
+                             }else
+                             {
+                               <button class="btn btn-icon btn-success" id="btnRemover" onclick="AtivarDesativar('@item.ProdutoId')"><i class="fa fa-trash"></i></button>
+                             }
                             </td>
                         </tr>
                     }
-                    
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
+
+
+<div class=" modal fade modal_confirm" id="modalConfirmarDesativacao">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" id="divcontent">
+            <div class="modal-header">
+                <h4 class="modal-title"> Ativar/Desativar registro</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    A confirmação resultará na: ativação(o produto ficará disponivel para o público)/desativação(o produto não será mais visto para o público).
+                    <br /><br />
+                    Tem certeza que deseja concluir a ação ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="delete_registro">SIM</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger">NÃO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script src="~/scripts/exibirProdutos.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+ <script src="~/js/datatables.min.js"></script>
 }

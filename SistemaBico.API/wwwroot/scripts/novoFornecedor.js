@@ -3,7 +3,7 @@
 
     $('#Telefone').inputmask('(99) 999999999');
 
-    $('#kt_ecommerce_add_product_form').submit(function (event) {
+    $('#RegistrarFornecedores').submit(function (event) {
         // Resetar mensagens de erro
         $('.error-message').remove();
 

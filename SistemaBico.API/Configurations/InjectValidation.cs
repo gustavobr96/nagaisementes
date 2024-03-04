@@ -29,6 +29,7 @@ namespace SistemaBico.API.Configurations
             services.AddScoped<IRequestHandler<AddProdutoCommand, Result>, RegistrarProdutoCommandHandler>();
             services.AddScoped<IRequestHandler<RegistrarVendaCommand, Result>, RegistrarVendaCommandHandler>();
             services.AddScoped<IRequestHandler<AddFornecedorCommand, Result>, RegistrarFornecedorHandler>();
+            services.AddScoped<IRequestHandler<AtivarEDesativarProdutoCommand, Result>, AtivarDesativarProdutoCommandHandler>();
         }
 
         public static void AddInjectRepositorys(this IServiceCollection services)

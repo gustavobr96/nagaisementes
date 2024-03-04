@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240303175829_1")]
+    [Migration("20240304190834_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -217,6 +217,9 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");

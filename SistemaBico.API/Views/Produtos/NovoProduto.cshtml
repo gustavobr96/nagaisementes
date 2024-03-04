@@ -6,27 +6,30 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-<div class="card card-outline card-primary card-lg">
+
+
+<div class="card card-outline card-primary">
     <div class="card-content">
         <div class="card-header">
             <h4 class="modal-title">Inserir Produto</h4>
+            
         </div>
         <div class="card-body">
             <div class="card-body">
-                <form action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                <form action="../Produtos/registrar" id="RegistrarProdutos" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Nome do produto* </label>
-                            <input type="text" class="form-control" name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto"/>
+                            <input type="text" class="form-control"  required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto"/>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Produto* </label>
-                            <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo">
+                            <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo" required>
                                 <option value="1" selected>Semente</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Fornecedor* </label>
+                            <label>Fornecedor<b class="required">*</b> </label>
                              <select class="form-control" id="Tipo" name="FornecedorId" asp-for="FornecedorId">
                                  <option value="" selected>Selecione um fornecedor</option>
                                 @foreach (var fornecedor in ViewBag.Fornecedores)
@@ -36,24 +39,28 @@
                              </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Observaçao* </label>
+                            <label>Observaçao </label>
                             <input type="text" class="form-control" name="Nome" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas"/>
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Quantidade* </label>
-                            <input type="text" class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" />
+                            <label>Quantidade de pontos<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" />
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Pureza(%)* </label>
-                            <input type="text" class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99"/>
+                            <label>Pureza(%)<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99"/>
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Tetrazólio(%)*</label>
-                            <input type="text" class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" />
+                            <label>Tetrazólio(%)<b class="required">*</b></label>
+                            <input type="text" required class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" />
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Descricao* </label>
-                            <textarea class="form-control" rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui..."></textarea>
+                            <label>Descricao<b class="required">*</b></label>
+                            <textarea class="form-control" required rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui..."></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                           <a  asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
+                           <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -61,13 +68,13 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-primary col-md-2"> Voltar</button>
-            <button type="button" class="btn btn-success col-md-2"> Salvar</button>
+           
+           
         </div>
     </div>
 </div>
 @section Scripts {
     <script src="~/scripts/novoProduto.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+@*     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script> *@
 }

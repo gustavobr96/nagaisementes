@@ -64,7 +64,7 @@ namespace SistemaBico.API.Controllers
                 {
                     var produtos = await ObterProdutos();
                     var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
-                    return View("ExibirProdutos", new ListResponseRazor { Produtos = produtosDto });
+                    return RedirectToAction("ExibirProdutos", new { produtosDto });
                 }
 
                 return RedirectToAction("Index", "Erro", new { area = "" });
@@ -72,6 +72,27 @@ namespace SistemaBico.API.Controllers
             catch (Exception e)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+        }
+
+        [Route("ativarDesativar")]
+        public async Task<IActionResult> AtivarDesativar([FromBody] Guid id)
+        {
+            try
+            {
+                var desativarAtivarCommand = new AtivarEDesativarProdutoCommand { ProdutoId = id };
+                var model = await _mediator.Send(desativarAtivarCommand);
+                if (model.IsSuccess)
+                {
+
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false });
             }
         }
 
