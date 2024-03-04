@@ -22,6 +22,20 @@ namespace Sistema.Bico.Domain.Entities
             Quantidade = Quantidade - quantidadeVendida;
         }
 
+        public void Atualizar(string nome, string descricao, string observacao, byte[] fotoBase64, TipoProduto tipoProduto,
+         decimal quantidade, decimal pureza, int tetrazolio, Guid fornecedorId)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            Observacao = observacao;
+            FotoBase64 = fotoBase64;
+            TipoProduto = tipoProduto;
+            Quantidade = quantidade;
+            Pureza = pureza;
+            Tetrazolio = tetrazolio;
+            FornecedorId = fornecedorId;
+            Update = DateTime.Now;
+        }
         public void AtivarDesativar()
         {
             Ativo = Ativo ? false : true;

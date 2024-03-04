@@ -1,0 +1,83 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SistemaBico.API.Dtos.ProdutoDto
+
+@{
+    ViewData["Title"] = "Editar Produto";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<div class="card card-outline card-primary">
+    <div class="card-content">
+        <div class="card-header">
+            <h4 class="modal-title">Inserir Produto</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="card-body">
+                <form action="../../Produtos/atualizar" id="AtualizarProduto" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="ProdutoId" value="@Model.ProdutoId" />
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nome do produto<b class="required">*</b></label>
+                            <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto" value="@Model.Nome" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tipo Produto<b class="required">*</b></label>
+                            <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo" required>
+                                <option value="1" selected>Semente</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fornecedor<b class="required">*</b> </label>
+                            <select class="form-control" id="FornecedorId" name="FornecedorId" asp-for="FornecedorId" required>
+                                <option value="" disabled>Selecione um fornecedor</option>
+                                @foreach (var fornecedor in ViewBag.Fornecedores)
+                                {
+                                    @if (Model.FornecedorId == fornecedor.Id)
+                                    {
+                                        <option value="@fornecedor.Id" selected>@fornecedor.Nome</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@fornecedor.Id">@fornecedor.Nome</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Observaçao </label>
+                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas" value="@Model.Observacao" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Quantidade de pontos<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" value="@Model.Quantidade" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Pureza(%)<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99" value="@Model.Pureza" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tetrazólio(%)<b class="required">*</b></label>
+                            <input type="text" required class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" value="@Model.Tetrazolio" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Descricao<b class="required">*</b></label>
+                            <textarea class="form-control" required rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui...">@Model.Descricao</textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <a asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
+                            <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/scripts/editarProduto.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+}

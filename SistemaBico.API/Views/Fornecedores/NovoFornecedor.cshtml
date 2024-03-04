@@ -6,11 +6,10 @@
 }
 
 
-<div class="card card-outline card-primary">
+<div class="card card-outline card-primary card-lg">
     <div class="card-content">
         <div class="card-header">
             <h4 class="modal-title">Inserir Produto</h4>
-
         </div>
         <div class="card-body">
             <div class="card-body">
@@ -20,17 +19,17 @@
                             <label>Nome do fornecedor* </label>
                             <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do fornecedor" />
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>Telefone* </label>
                             <input type="text" class="form-control" required name="Telefone" id="Telefone" asp-for="Telefone" maxlength="100" placeholder="" />
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label>CPF/CNPJ </label>
                             <input type="text" class="form-control" name="CpfCnpj" id="CpfCnpj" asp-for="CpfCnpj" maxlength="100" placeholder="" />
                         </div>
                        
                         <div class="form-group col-md-12">
-                            <a asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
+                            <a asp-area="" asp-controller="Fornecedores" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
                             <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
                         </div>
                     </div>

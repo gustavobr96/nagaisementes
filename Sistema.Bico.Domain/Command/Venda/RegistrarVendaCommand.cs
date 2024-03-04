@@ -2,7 +2,7 @@
 using MediatR;
 using System;
 
-namespace Sistema.Bico.Domain.Command
+namespace Sistema.Bico.Domain.Command.Venda
 {
     public class RegistrarVendaCommand : IRequest<Result>
     {

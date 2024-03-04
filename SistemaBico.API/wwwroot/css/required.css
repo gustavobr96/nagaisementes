@@ -1,3 +1,9 @@
 ﻿.required {
     color: red;
 }
+
+.btn-desativado {
+    background-color: #f8f9fa; /* ou qualquer outra cor mais clara desejada */
+    border-color: #f8f9fa;
+    color: #6c757d; /* ou qualquer outra cor de texto desejada */
+}

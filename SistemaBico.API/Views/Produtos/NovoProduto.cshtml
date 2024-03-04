@@ -6,8 +6,6 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-
-
 <div class="card card-outline card-primary">
     <div class="card-content">
         <div class="card-header">
@@ -19,18 +17,18 @@
                 <form action="../Produtos/registrar" id="RegistrarProdutos" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label>Nome do produto* </label>
+                            <label>Nome do produto<b class="required">*</b></label>
                             <input type="text" class="form-control"  required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto"/>
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Tipo Produto* </label>
+                            <label>Tipo Produto<b class="required">*</b></label>
                             <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo" required>
                                 <option value="1" selected>Semente</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fornecedor<b class="required">*</b> </label>
-                             <select class="form-control" id="Tipo" name="FornecedorId" asp-for="FornecedorId">
+                             <select class="form-control" id="FornecedorId"  name="FornecedorId" asp-for="FornecedorId">
                                  <option value="" selected>Selecione um fornecedor</option>
                                 @foreach (var fornecedor in ViewBag.Fornecedores)
                                 {
@@ -40,7 +38,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Observaçao </label>
-                            <input type="text" class="form-control" name="Nome" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas"/>
+                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas"/>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Quantidade de pontos<b class="required">*</b> </label>
@@ -75,6 +73,6 @@
 </div>
 @section Scripts {
     <script src="~/scripts/novoProduto.js"></script>
-@*     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script> *@
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }

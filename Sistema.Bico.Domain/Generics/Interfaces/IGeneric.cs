@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sistema.Bico.Domain.Generics.Interfaces
@@ -10,6 +12,8 @@ namespace Sistema.Bico.Domain.Generics.Interfaces
         Task Update(T entity);
         Task Delete(T entity);
         Task<T> GetEntityById(Guid id);
-        Task<List<T>> GetAll();
+        Task<List<T>> GetAll(Expression<Func<T, bool>> filter = null,
+                                   Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                   string includeProperties = null);
     }
 }

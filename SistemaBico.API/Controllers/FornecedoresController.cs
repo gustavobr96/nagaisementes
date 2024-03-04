@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Sistema.Bico.Domain.Command;
+using Sistema.Bico.Domain.Command.Fornecedor;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
 using SistemaBico.API.Dtos;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBico.API.Controllers
 {
-	[Route("[controller]")]
+    [Route("[controller]")]
 	public class FornecedoresController : Controller
     {
         private readonly IMediator _mediator;

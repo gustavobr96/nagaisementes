@@ -29,13 +29,14 @@
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Observação</th>
                         <th scope="col">Data</th>
+                        <th scope="col">Ativo</th>
                         <th scope="col">Opções</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Produtos)
                     {
-                        <tr>
+                        <tr class="table-row @(item.Ativo ? "" : "table-disabled-row")">
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
                             <td>@item.Quantidade</td>
@@ -44,15 +45,28 @@
                             <td>@item.FornecedorName</td>
                             <td>@item.Observacao</td>
                             <td>@item.DataCadastro</td>
+                            @if (item.Ativo)
+                            {
+                                <td>Ativo</td>
+                            }
+                            else
+                            {
+                                <td>Desativado</td>
+                            }
                             <td>
-                             <button class="btn btn-icon btn-primary" id="btnAlterar" onclick="Alterar('${dado.id}')"><i class="fa fa-edit"></i></button>
-                             @if(item.Ativo)
-                             {
-                               <button class="btn btn-icon btn-danger" id="btnR" onclick="AtivarDesativar('@item.ProdutoId')"><i class="fa fa-trash"></i></button>
-                             }else
-                             {
-                               <button class="btn btn-icon btn-success" id="btnRemover" onclick="AtivarDesativar('@item.ProdutoId')"><i class="fa fa-trash"></i></button>
-                             }
+                                <button class="btn btn-icon btn-primary" id="btnEditar" onclick="Alterar('@item.ProdutoId')"><i class="fa fa-edit"></i></button>
+                                @if (item.Quantidade > 0)
+                                {
+                                    <button class="btn btn-icon btn-success" id="btnVenda" onclick="Venda('@item.ProdutoId')"><i class="fas fa-shopping-cart"></i></button>
+                                }
+                                @if (item.Ativo)
+                                {
+                                    <button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.ProdutoId')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye"></i></button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.ProdutoId')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye-slash"></i></button>
+                                }
                             </td>
                         </tr>
                     }
@@ -87,6 +101,4 @@
 
 @section Scripts {
     <script src="~/scripts/exibirProdutos.js"></script>
-    <script src="~/js/jquery.min.js"></script>
- <script src="~/js/datatables.min.js"></script>
 }

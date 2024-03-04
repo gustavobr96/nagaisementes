@@ -1,3 +1,17 @@
-﻿.required-label {
-    color: red;
+﻿.card-md {
+    width: 900px;
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.card-lg {
+    width: 1200px;
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.card-sm {
+    width: 600px;
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
 }

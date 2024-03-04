@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using AutoMapper;
 using MediatR;
-using Sistema.Bico.Domain.Command;
+using Sistema.Bico.Domain.Command.Fornecedor;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
 using System;

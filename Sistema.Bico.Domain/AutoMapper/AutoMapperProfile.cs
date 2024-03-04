@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Sistema.Bico.Domain.Command;
+using Sistema.Bico.Domain.Command.Fornecedor;
+using Sistema.Bico.Domain.Command.Venda;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Generics.Entities;
 
@@ -25,6 +27,7 @@ namespace Sistema.Bico.Domain.AutoMapper
 
             _ = CreateMap<Produto, AddProdutoCommand>()
                 .ReverseMap();
+
 
 
             _ = CreateMap<Venda, RegistrarVendaCommand>()

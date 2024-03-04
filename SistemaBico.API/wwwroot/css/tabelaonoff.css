@@ -1,0 +1,4 @@
+﻿.table-disabled-row {
+    background-color: #f8d7da; /* Cor de fundo para linhas desativadas (pode personalizar) */
+    color: #721c24; /* Cor do texto para linhas desativadas (pode personalizar) */
+}

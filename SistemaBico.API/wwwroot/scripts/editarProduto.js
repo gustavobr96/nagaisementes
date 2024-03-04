@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-
-
+    var val = $('#Quantidade').val;
+    $('#Quantidade').val(val);
 
     // Máscara para o campo de Quantidade
     $('#Quantidade').inputmask({
@@ -94,3 +94,8 @@
 
 });
 
+
+
+function formatarDuasCasasDecimais(valor) {
+    return valor.toFixed(2);
+}

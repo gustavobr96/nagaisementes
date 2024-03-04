@@ -8,6 +8,7 @@ using SistemaBico.API.Dtos;
 using SistemaBico.API.Dtos.ResponseRazor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaBico.API.Controllers
@@ -64,7 +65,7 @@ namespace SistemaBico.API.Controllers
                 {
                     var produtos = await ObterProdutos();
                     var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
-                    return RedirectToAction("ExibirProdutos", new { produtosDto });
+                    return RedirectToAction("ExibirProdutos", produtosDto);
                 }
 
                 return RedirectToAction("Index", "Erro", new { area = "" });
@@ -75,12 +76,70 @@ namespace SistemaBico.API.Controllers
             }
         }
 
-        [Route("ativarDesativar")]
-        public async Task<IActionResult> AtivarDesativar([FromBody] Guid id)
+        [HttpGet]
+        [Route("editar-produto/{id}")]
+        public async Task<IActionResult> Editar(Guid id)
         {
             try
             {
-                var desativarAtivarCommand = new AtivarEDesativarProdutoCommand { ProdutoId = id };
+                // Recupere os dados do produto pelo ID
+                var produto = await _produtoRepository.GetEntityById(id);
+
+                if (produto == null)
+                {
+                    return RedirectToAction("Index", "Erro", new { area = "" }); // Ou outra ação apropriada
+                }
+
+                // Mapeie o produto para um objeto ProdutoDto (se necessário)
+                var produtoDto = _mapper.Map<ProdutoDto>(produto);
+
+                // Obtenha a lista de fornecedores (se necessário)
+                var fornecedores = await _fornecedorRepository.GetAll();
+                var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
+
+                ViewBag.Fornecedores = fornecedoresDto;
+
+                return View("EditarProduto", produtoDto);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" }); // Ou outra ação apropriada
+            }
+        }
+
+        [Route("atualizar")]
+        public async Task<IActionResult> Atualizar(ProdutoDto produtoDto)
+        {
+            try
+            {
+                // Validar os dados conforme necessário
+
+                var produto = _mapper.Map<EditarProdutoCommand>(produtoDto);
+                var model = await _mediator.Send(produto);
+
+                if (model.IsSuccess)
+                {
+                    var produtos = await ObterProdutos();
+                    var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
+                    return RedirectToAction("ExibirProdutos", produtosDto);
+                }
+
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+        }
+    
+
+
+        [Route("ativarDesativar")]
+        public async Task<IActionResult> AtivarDesativar([FromBody] string id)
+        {
+            try
+            {
+                var desativarAtivarCommand = new AtivarEDesativarProdutoCommand { ProdutoId = Guid.Parse(id) };
                 var model = await _mediator.Send(desativarAtivarCommand);
                 if (model.IsSuccess)
                 {

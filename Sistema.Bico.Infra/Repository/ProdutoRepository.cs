@@ -4,6 +4,7 @@ using Sistema.Bico.Domain.Interface;
 using Sistema.Bico.Infra.Context;
 using Sistema.Bico.Infra.Generics.Repository;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sistema.Bico.Infra.Repository
