@@ -17,21 +17,28 @@ namespace SistemaBico.API.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IFornecedorRepository _fornecedorRepository;
         private readonly IMapper _mapper;
 
         public ProdutosController(IMediator mediator,
             IProdutoRepository produtoRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IFornecedorRepository fornecedorRepository)
         {
             _mediator = mediator;
             _produtoRepository = produtoRepository;
             _mapper = mapper;
+            _fornecedorRepository = fornecedorRepository;
         }
 
 
         [Route("novo-produto")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var fornecedores = await _fornecedorRepository.GetAll();
+            var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
+
+            ViewBag.Fornecedores = fornecedoresDto;
             return View("NovoProduto");
         }
 

@@ -1,256 +1,73 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model SistemaBico.API.Dtos.ProdutoDto;
+
 @{
     ViewData["Title"] = "Cadastro de Produtos";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
-@section Head {
-    <link href="Site/Site/assets/css/card.css" rel="stylesheet" />
-}
 
-
-<script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
-<!--end::Theme mode setup on page load-->
-<!--begin::App-->
-<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-    <!--begin::Page-->
-    <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-        <!--begin::Wrapper-->
-        <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-            <!--begin::Main-->
-            <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-                <!--begin::Content wrapper-->
-                <div class="d-flex flex-column flex-column-fluid">
-                    <!--begin::Toolbar-->
-                    <!--end::Toolbar-->
-                    <!--begin::Content-->
-                    <div id="kt_app_content" class="app-content flex-column-fluid">
-                        <!--begin::Content container-->
-                        <div id="kt_app_content_container" class="app-container container-xxl">
-                            <!--begin::Form-->
-                            <form id="kt_ecommerce_add_product_form" action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" method="post" novalidate="novalidate" enctype="multipart/form-data">
-                                <!--begin::Aside column-->
-                                <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-                                    <!--begin::Thumbnail settings-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Foto</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body text-center pt-0">
-                                            <!--begin::Image input-->
-                                            <!--begin::Image input placeholder-->
-                                            <style>
-                                                .image-input-placeholder {
-                                                    background-image: url('Site/assets/media/users/default.jpg');
-                                                }
-
-                                                [data-bs-theme="dark"] .image-input-placeholder {
-                                                    background-image: url('Site/assets/media/svg/files/blank-image-dark.svg');
-                                                }</style>
-                                            <!--end::Image input placeholder-->
-                                            <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
-                                                <!--begin::Preview existing avatar-->
-                                                <div class="image-input-wrapper w-150px h-150px"></div>
-                                                <!--end::Preview existing avatar-->
-                                                <!--begin::Label-->
-                                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                                    <i class="fa fa-pen icon-sm text-muted">
-                                                        <span class="path1"></span>
-                                                        <span class="path2"></span>
-                                                    </i>
-                                                    <!--begin::Inputs-->
-                                                    <input type="file" accept=".png, .jpg, .jpeg" asp-for="File" />
-                                                    <input type="hidden" name="profile_avatar_remove" />
-                                                    <!--end::Inputs-->
-                                                </label>
-                                                <!--end::Label-->
-                                                <!--begin::Cancel-->
-                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                                    <i class="ki ki-bold-close icon-xs text-muted">
-                                                        <span class="path1"></span>
-                                                        <span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                                <!--end::Cancel-->
-                                            </div>
-                                            <!--end::Image input-->
-                                            <!--begin::Description-->
-                                            <div class="text-muted fs-7">Defina a imagem em miniatura do produto. Somente arquivos de imagem *.png, *.jpg e *.jpeg são aceitos</div>
-                                            <!--end::Description-->
-                                        </div>
-                                        <!--end::Card body-->
-                                    </div>
-                                    <!--end::Thumbnail settings-->
-                                </div>
-                                <!--end::Aside column-->
-                                <!--begin::Main column-->
-                                <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                                    <!--end:::Tabs-->
-                                    <!--begin::Tab content-->
-                                    <div class="tab-content">
-                                        <!--begin::Tab pane-->
-                                        <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general">
-                                            <div class="d-flex flex-column gap-7 gap-lg-10">
-                                                <!--begin::General options-->
-                                                <div class="card card-flush py-4">
-                                                    <!--begin::Card header-->
-                                                    <div class="card-header">
-                                                        <div class="card-title">
-                                                            <h1>Cadastro de Produtos</h1>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Card header-->
-                                                    <!--begin::Card body-->
-                                                    <div class="card-body pt-0">
-                                                        <!--begin::Input group-->
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Nome do Produto</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Input-->
-                                                            <input type="text" class="form-control mb-2" placeholder="Nome do produto" name="Nome" asp-for="Nome" id="Nome" />
-                                                            <!--end::Input-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Um nome de produto é obrigatório e recomendado para ser exclusivo.</div>
-                                                            <!--end::Description-->
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Tipo do Produto</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Select2-->
-                                                            <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" id="Tipo" name="Tipo" asp-for="Tipo">
-                                                                <option></option>
-                                                                <option value="1" selected>Semente</option>
-                                                            </select>
-                                                            <!--end::Select2-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Selecione o tipo do produto.</div>
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Selecione o Fornecedor</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Select2-->
-                                                            <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Selecione uma opção" id="FornecedorId" name="FornecedorId" asp-for="FornecedorId">
-                                                            </select>
-                                                            <!--end::Select2-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Selecione o fornecedor.</div>
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Observação</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Input-->
-                                                            <input type="text" class="form-control mb-2" placeholder="Digite uma observação" name="Observacao" asp-for="Observacao" id="Observacao" maxlength="40" />
-                                                            <!--end::Input-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Digite uma observação desse produto ex: Produto contém praga.</div>
-                                                            <!--end::Description-->
-                                                        </div>
-                                                        <!--end::Input group-->
-                                                        <!--begin::Input group-->
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Descrição</label>
-                                                            <!--end::Label-->
-                                                            <!--begin::Editor-->
-                                                            <textarea class="form-control" name="Descricao" maxlength="300" placeholder="" asp-for="Descricao" rows="6" id="Descricao"></textarea>
-                                                            <!--end::Editor-->
-                                                            <!--begin::Description-->
-                                                            <div class="text-muted fs-7">Defina uma descrição do produto para melhor visibilidade..</div>
-                                                            <!--end::Description-->
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Quantidade</label>
-                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 30" name="Quantidade" asp-for="Quantidade" id="Quantidade" />
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Pureza (%)</label>
-                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Pureza" asp-for="Pureza" id="Pureza" maxlength="5" />
-                                                        </div>
-                                                        <div class="mb-10 fv-row">
-                                                            <!--begin::Label-->
-                                                            <label class="required form-label">Tetrazólio (%)</label>
-                                                            <input type="text" name="shelf" class="form-control mb-2" placeholder="Ex: 80" name="Tetrazolio" asp-for="Tetrazolio" id="Tetrazolio" maxlength="3" />
-                                                        </div>
-                                                        <!--begin::Input group-->
-                                                        <!--end::Input group-->
-                                                    </div>
-                                                    <!--end::Card header-->
-                                                </div>
-                                                <!--end::General options-->
-                                            </div>
-                                        </div>
-                                        <!--end::Tab pane-->
-                                    </div>
-                                    <!--end::Tab content-->
-                                    <div class="d-flex justify-content-end">
-                                        <!--begin::Button-->
-                                        <a asp-area="" asp-controller="Produtos" asp-action="listar" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Voltar</a>
-                                        <!--end::Button-->
-                                        <!--begin::Button-->
-                                        <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                                            <span class="indicator-label">Salvar</span>
-                                            <span class="indicator-progress">
-                                                Please wait...
-                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                            </span>
-                                        </button>
-                                        <!--end::Button-->
-                                    </div>
-                                </div>
-                                <!--end::Main column-->
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Content container-->
-                    </div>
-                    <!--end::Content-->
-                </div>
-                <!--end::Content wrapper-->
-            </div>
-            <!--end:::Main-->
+<div class="card card-outline card-primary card-lg">
+    <div class="card-content">
+        <div class="card-header">
+            <h4 class="modal-title">Inserir Produto</h4>
         </div>
-        <!--end::Wrapper-->
-    </div>
-    <!--end::Page-->
-</div>
-<!--end::Modal - Invite Friend-->
-<!--end::Modals-->
-<!--begin::Javascript-->
-<!--end::Custom Javascript-->
-<!--end::Javascript-->
-@section Scripts {
-    <script>var hostUrl = "Site/assets/";</script>
-    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="Site/assets/plugins/global/plugins.bundle.js"></script>
-    <script src="Site/assets/js/scripts.bundle.js"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Vendors Javascript(used for this page only)-->
+        <div class="card-body">
+            <div class="card-body">
+                <form action="Produtos/registrar" class="form d-flex flex-column flex-lg-row" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nome do produto* </label>
+                            <input type="text" class="form-control" name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tipo Produto* </label>
+                            <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo">
+                                <option value="1" selected>Semente</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fornecedor* </label>
+                             <select class="form-control" id="Tipo" name="FornecedorId" asp-for="FornecedorId">
+                                 <option value="" selected>Selecione um fornecedor</option>
+                                @foreach (var fornecedor in ViewBag.Fornecedores)
+                                {
+                                  <option value="@fornecedor.Id">@fornecedor.Nome</option>
+                                }
+                             </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Observaçao* </label>
+                            <input type="text" class="form-control" name="Nome" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Quantidade* </label>
+                            <input type="text" class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Pureza(%)* </label>
+                            <input type="text" class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tetrazólio(%)*</label>
+                            <input type="text" class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Descricao* </label>
+                            <textarea class="form-control" rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui..."></textarea>
+                        </div>
+                    </div>
+                </form>
 
-    <script src="Site/assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
-    <!--end::Vendors Javascript-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="Site/assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
-    <script src="Site/assets/js/widgets.bundle.js"></script>
-    <script src="Site/assets/js/custom/widgets.js"></script>
-    <script src="Site/assets/js/custom/apps/chat/chat.js"></script>
-    <script src="Site/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="Site/assets/js/custom/utilities/modals/create-app.js"></script>
-    <script src="Site/assets/js/custom/utilities/modals/users-search.js"></script>
-    <script src="~/js/novoProduto.js"></script>
-    <!-- Adicione essas referências ao jQuery e ao Inputmask no cabeçalho da sua página ou no layout -->
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary col-md-2"> Voltar</button>
+            <button type="button" class="btn btn-success col-md-2"> Salvar</button>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/scripts/novoProduto.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }

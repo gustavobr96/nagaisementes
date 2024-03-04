@@ -1,0 +1,18 @@
+﻿
+.card-md {
+    width: 800px;
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.card-lg {
+    max-width: 1100px; /* Ajuste o tamanho do card conforme necessário */
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.card-sm {
+    width: 500px;
+    margin: auto; /* Isso centralizará o card horizontalmente */
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
