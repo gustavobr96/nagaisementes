@@ -2,18 +2,17 @@
 
 
 
-    // Máscara para o campo de Quantidade
     $('#Quantidade').inputmask({
         alias: 'numeric',
         autoGroup: true,
         groupSeparator: ',',
-        radixPoint: '.',  // Use ponto como separador decimal
-        digits: 0,
-        digitsOptional: false,
-        placeholder: '0',
+        radixPoint: ',',  // Use ponto como separador decimal
+        digits: 3,
+        digitsOptional: true,
+        placeholder: '000,000',
+        numericInput: true,
         rightAlign: false
     });
-
     $('#Pureza').inputmask({
         alias: 'numeric',
         autoGroup: true,

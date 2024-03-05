@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240304190834_1")]
+    [Migration("20240305131027_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -244,7 +244,7 @@ namespace Sistema.Bico.Infra.Migrations
                         .HasColumnName("Pureza");
 
                     b.Property<decimal>("Quantidade")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("Quantidade");
 
                     b.Property<int>("Tetrazolio")
@@ -277,7 +277,7 @@ namespace Sistema.Bico.Infra.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("QuantidadeVendida")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("QuantidadeVendida");
 
                     b.Property<DateTime?>("Update")

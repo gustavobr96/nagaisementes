@@ -45,7 +45,7 @@
                             </td>
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
-                            <td>@item.Quantidade</td>
+                            <td>@String.Format("{0:#,##0}", decimal.Parse(item.Quantidade.ToString().Replace(",", "."), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))) </td>
                             <td>@item.Pureza%</td>
                             <td>@item.Tetrazolio%</td>
                             <td>@item.FornecedorName</td>

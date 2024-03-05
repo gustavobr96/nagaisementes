@@ -1,18 +1,15 @@
 ﻿$(document).ready(function () {
-
-
-    var val = $('#Quantidade').val;
-    $('#Quantidade').val(val);
-
-    // Máscara para o campo de Quantidade
+    //var val = $('#Quantidade').val;
+    //$('#Quantidade').val(val);
     $('#Quantidade').inputmask({
         alias: 'numeric',
         autoGroup: true,
         groupSeparator: ',',
-        radixPoint: '.',  // Use ponto como separador decimal
-        digits: 0,
-        digitsOptional: false,
-        placeholder: '0',
+        radixPoint: ',',  // Use ponto como separador decimal
+        digits: 3,
+        digitsOptional: true,
+        placeholder: '000,000',
+        numericInput: true,
         rightAlign: false
     });
 
@@ -37,6 +34,7 @@
         groupSeparator: '', // Não usar separador de milhares
         groupSize: 3 // Tamanho do grupo
     });
+
     // Ao enviar o formulário
     $('#RegistrarProdutos').submit(function (event) {
 
@@ -91,7 +89,6 @@
             event.preventDefault();
         }
 
-
     });
 
 });
@@ -119,6 +116,6 @@ document.getElementById('File').addEventListener('change', function () {
         previewImage.style.display = 'none';
     }
 });
-function formatarDuasCasasDecimais(valor) {
-    return valor.toFixed(2);
-}
+//function formatarDuasCasasDecimais(valor) {
+//    return valor.toFixed(2);
+//}
