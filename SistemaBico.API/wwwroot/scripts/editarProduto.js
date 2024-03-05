@@ -1,6 +1,4 @@
 ﻿$(document).ready(function () {
-    //var val = $('#Quantidade').val;
-    //$('#Quantidade').val(val);
     $('#Quantidade').inputmask({
         alias: 'numeric',
         autoGroup: true,
@@ -116,6 +114,3 @@ document.getElementById('File').addEventListener('change', function () {
         previewImage.style.display = 'none';
     }
 });
-//function formatarDuasCasasDecimais(valor) {
-//    return valor.toFixed(2);
-//}
