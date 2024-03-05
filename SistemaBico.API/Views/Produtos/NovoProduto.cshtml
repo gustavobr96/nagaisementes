@@ -10,7 +10,7 @@
     <div class="card-content">
         <div class="card-header">
             <h4 class="modal-title">Inserir Produto</h4>
-            
+
         </div>
         <div class="card-body">
             <div class="card-body">
@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Nome do produto<b class="required">*</b></label>
-                            <input type="text" class="form-control"  required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto"/>
+                            <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto" />
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Produto<b class="required">*</b></label>
@@ -28,17 +28,17 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fornecedor<b class="required">*</b> </label>
-                             <select class="form-control" id="FornecedorId"  name="FornecedorId" asp-for="FornecedorId">
-                                 <option value="" selected>Selecione um fornecedor</option>
+                            <select class="form-control" id="FornecedorId" name="FornecedorId" asp-for="FornecedorId">
+                                <option value="" selected>Selecione um fornecedor</option>
                                 @foreach (var fornecedor in ViewBag.Fornecedores)
                                 {
-                                  <option value="@fornecedor.Id">@fornecedor.Nome</option>
+                                    <option value="@fornecedor.Id">@fornecedor.Nome</option>
                                 }
-                             </select>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Observaçao </label>
-                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas"/>
+                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas" />
                         </div>
                         <div class="form-group col-md-3">
                             <label>Quantidade de pontos<b class="required">*</b> </label>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Pureza(%)<b class="required">*</b> </label>
-                            <input type="text" required class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99"/>
+                            <input type="text" required class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99" />
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tetrazólio(%)<b class="required">*</b></label>
@@ -56,9 +56,16 @@
                             <label>Descricao<b class="required">*</b></label>
                             <textarea class="form-control" required rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui..."></textarea>
                         </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="Imagem" id="Imagem" accept=".png, .jpg, .jpeg" asp-for="File">
+                            <label class="custom-file-label" for="Imagem">Escolher arquivo</label>
+                        </div>
+                        <div class="mt-3">
+                            <img id="previewImage" src="data:image/jgp;base64,@Model.FotoBase64" class="img-thumbnail" alt="Preview" style="max-width: 300px; max-height: 300px;">
+                        </div>
                         <div class="form-group col-md-12">
-                           <a  asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
-                           <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
+                            <a asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
+                            <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -66,8 +73,6 @@
             </div>
         </div>
         <div class="card-footer">
-           
-           
         </div>
     </div>
 </div>

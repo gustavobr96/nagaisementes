@@ -28,13 +28,15 @@ namespace Sistema.Bico.Domain.Entities
             Nome = nome;
             Descricao = descricao;
             Observacao = observacao;
-            FotoBase64 = fotoBase64;
             TipoProduto = tipoProduto;
             Quantidade = quantidade;
             Pureza = pureza;
             Tetrazolio = tetrazolio;
             FornecedorId = fornecedorId;
             Update = DateTime.Now;
+
+            if (fotoBase64 != null && fotoBase64.Length > 0)
+                FotoBase64 = fotoBase64;
         }
         public void AtivarDesativar()
         {

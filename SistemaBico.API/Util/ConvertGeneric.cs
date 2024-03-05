@@ -16,11 +16,11 @@ namespace SistemaBico.API.Util
             using (var ms = new MemoryStream())
             {
                 file.CopyTo(ms);
-                using (var img = Image.FromStream(ms))
-                {
-                    if (img.Height > HEIGHT || img.Width > WIDTH)
-                        return ReduceImage(img, file);
-                }
+                //using (var img = Image.FromStream(ms))
+                //{
+                //    if (img.Height > HEIGHT || img.Width > WIDTH)
+                //        return ReduceImage(img, file);
+                //}
 
                 return ms.ToArray();
             }

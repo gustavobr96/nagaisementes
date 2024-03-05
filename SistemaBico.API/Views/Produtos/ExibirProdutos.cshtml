@@ -21,6 +21,7 @@
             <table class="table table-striped" id="ProdutosCadastrados">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Qtd de Pontos</th>
@@ -30,13 +31,18 @@
                         <th scope="col">Observação</th>
                         <th scope="col">Data</th>
                         <th scope="col">Ativo</th>
-                        <th scope="col">Opções</th>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Produtos)
                     {
                         <tr class="table-row @(item.Ativo ? "" : "table-disabled-row")">
+                            <td>
+                                <img src="data:image/jpg;base64,@item.FotoBase64" alt="Imagem do Produto" class="produto-thumbnail" style="max-width: 40px; max-height: 40px;">
+                            </td>
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
                             <td>@item.Quantidade</td>
@@ -53,21 +59,24 @@
                             {
                                 <td>Desativado</td>
                             }
-                            <td>
-                                <button class="btn btn-icon btn-primary" id="btnEditar" onclick="Alterar('@item.ProdutoId')"><i class="fa fa-edit"></i></button>
-                                @if (item.Quantidade > 0)
-                                {
-                                    <button class="btn btn-icon btn-success" id="btnVenda" onclick="Venda('@item.ProdutoId')"><i class="fas fa-shopping-cart"></i></button>
-                                }
-                                @if (item.Ativo)
-                                {
-                                    <button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.ProdutoId')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye"></i></button>
-                                }
-                                else
-                                {
-                                    <button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.ProdutoId')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye-slash"></i></button>
-                                }
-                            </td>
+                            <td><button class="btn btn-icon btn-primary" id="btnEditar" onclick="Alterar('@item.ProdutoId')"><i class="fa fa-edit"></i></button></td>
+                            @if (item.Quantidade > 0)
+                            {
+                                <td><button class="btn btn-icon btn-success" id="btnVenda" onclick="Venda('@item.ProdutoId')"><i class="fas fa-shopping-cart"></i></button></td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                            @if (item.Ativo)
+                            {
+                                <td><button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.ProdutoId')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye"></i></button></td>
+                            }
+                            else
+                            {
+                                <td><button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.ProdutoId')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye-slash"></i></button></td>
+                            }
                         </tr>
                     }
                 </tbody>

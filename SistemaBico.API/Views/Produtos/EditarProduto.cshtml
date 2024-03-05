@@ -64,6 +64,16 @@
                             <label>Descricao<b class="required">*</b></label>
                             <textarea class="form-control" required rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui...">@Model.Descricao</textarea>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label>Imagem do Produto</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="File" id="File" accept=".png, .jpg, .jpeg" asp-for="File">
+                                <label class="custom-file-label" for="Imagem">Escolher arquivo</label>
+                            </div>
+                            <div class="mt-3">
+                                <img id="previewImage" src="data:image/jpeg;base64,@Model.FotoBase64" class="img-thumbnail" alt="Preview" style="max-width: 300px; max-height: 300px;">
+                            </div>
+                        </div>
                         <div class="form-group col-md-12">
                             <a asp-area="" asp-controller="Produtos" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
                             <button type="submit" class="btn btn-success col-md-2"> Salvar</button>

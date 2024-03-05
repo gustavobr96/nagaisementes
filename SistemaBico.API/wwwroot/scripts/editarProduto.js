@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+
+
     var val = $('#Quantidade').val;
     $('#Quantidade').val(val);
 
@@ -95,7 +97,28 @@
 });
 
 
+document.getElementById('File').addEventListener('change', function () {
+    var previewImage = document.getElementById('previewImage');
+    var fileInput = this;
+    var fileName = fileInput.value.split('\\').pop(); // Extraindo apenas o nome do arquivo
 
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+        };
+
+        reader.readAsDataURL(fileInput.files[0]);
+
+        // Atualizando o texto do label do arquivo
+        var customFileLabel = document.querySelector('.custom-file-label');
+        customFileLabel.innerText = fileName;
+    } else {
+        previewImage.style.display = 'none';
+    }
+});
 function formatarDuasCasasDecimais(valor) {
     return valor.toFixed(2);
 }
