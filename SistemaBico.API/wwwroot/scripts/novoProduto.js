@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#ValorUnitarioVenda').inputmask({
+    $('#ValorUnitarioCompra').inputmask({
         alias: 'numeric',
         autoGroup: true,
         groupSeparator: '.',
@@ -68,12 +68,12 @@
         var habilitarCampoValor = QuantidadeFormatada > 0;
 
         // Habilitar ou desabilitar o campo txtValor
-        ValorUnitarioVenda.disabled = !habilitarCampoValor;
+        ValorUnitarioCompra.disabled = !habilitarCampoValor;
 
         // Exibir ou ocultar a mensagem de motivo
         var mensagemMotivo = document.getElementById('mensagemMotivo');
         if (!habilitarCampoValor) {
-            document.getElementById('ValorUnitarioVenda').value = "";
+            document.getElementById('ValorUnitarioCompra').value = "";
             document.getElementById('txtValorTotal').value = "";
             // Se o campo estiver desabilitado, exibe a mensagem
             mensagemMotivo.innerText = 'A quantidade deve ser maior que 0.';
@@ -87,7 +87,7 @@
         console.log('Ação executada ao tirar o foco do campo txtQuantidadeVenda!');
     });
 
-    document.getElementById('ValorUnitarioVenda').addEventListener('blur', function () {
+    document.getElementById('ValorUnitarioCompra').addEventListener('blur', function () {
         CalcularTotal();
     });
 
@@ -177,7 +177,7 @@ document.getElementById('File').addEventListener('change', function () {
 function CalcularTotal() {
     // Redireciona para a página de edição com o ID do produto
     var txtQuantidadeCompra = document.getElementById('Quantidade').value.replace(",", ".");
-    var txtValorUnitario = document.getElementById('ValorUnitarioVenda').value;
+    var txtValorUnitario = document.getElementById('ValorUnitarioCompra').value;
 
     if (txtValorUnitario != "" && txtQuantidadeCompra != "") {
         var valorNumerico = parseFloat(txtValorUnitario.replace(/\./g, '').replace(',', '.'));

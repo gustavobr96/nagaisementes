@@ -16,7 +16,7 @@ namespace SistemaBico.API.Dtos
         public decimal Quantidade { get; set; }
         public string QuantidadeString { get; set; }
         public decimal Pureza { get; set; }
-        public decimal ValorUnitarioVenda { get; set; }
+        public decimal ValorUnitarioCompra { get; set; }
         public int Tetrazolio { get; set; }
         public string FornecedorId { get; set; }
         public string FornecedorName { get; set; }

@@ -33,11 +33,13 @@ namespace Sistema.Bico.Domain.UseCases.Vendas
 
                 if (produto == null) return Result.Error("Produto não encontrado");
 
-                if (request.Quandidade > produto.Quantidade) return Result.Error("Quantidade maior do que possui no estoque.");
+                if (request.QuantidadeVendida > produto.Quantidade) return Result.Error("Quantidade maior do que possui no estoque.");
 
 
                 var venda = _mapper.Map<Venda>(request);
-                produto.RealizarVenda(request.Quandidade);
+                venda.ValorCompraUnitario = produto.ValorUnitarioCompra;
+
+                produto.RealizarVenda(request.QuantidadeVendida);
 
                 await _vendaRepository.Add(venda);
                 await _produtoRepository.Update(produto);

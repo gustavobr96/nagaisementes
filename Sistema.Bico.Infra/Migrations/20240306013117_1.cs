@@ -119,7 +119,7 @@ namespace Sistema.Bico.Infra.Migrations
                     TipoProduto = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
                     Pureza = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ValorUnitarioVenda = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ValorUnitarioCompra = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Tetrazolio = table.Column<int>(type: "int", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
                     FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),

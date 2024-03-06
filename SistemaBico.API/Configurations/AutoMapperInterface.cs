@@ -2,6 +2,7 @@
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Fornecedor;
 using Sistema.Bico.Domain.Command.Produto;
+using Sistema.Bico.Domain.Command.Venda;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Generics.Extensions;
 using SistemaBico.API.Dtos;
@@ -39,6 +40,11 @@ namespace SistemaBico.API.Configurations
             _ = CreateMap<FornecedorDto, AddFornecedorCommand>();
             _ = CreateMap<FornecedorDto, EditarFornecedorCommand>()
               .ForMember(dst => dst.Id, map => map.MapFrom(src => Guid.Parse(src.Id)));
+
+            _ = CreateMap<VendaDto, RegistrarVendaCommand>()
+                .ForMember(dst => dst.QuantidadeVendida, map => map.MapFrom(src => decimal.Parse(src.QuantidadeVendida)))
+                .ForMember(dst => dst.ValorVendaUnitario, map => map.MapFrom(src => decimal.Parse(src.ValorVendaUnitario)))
+                .ForMember(dst => dst.ProdutoId, map => map.MapFrom(src => Guid.Parse(src.ProdutoId)));
         }
     }
 }

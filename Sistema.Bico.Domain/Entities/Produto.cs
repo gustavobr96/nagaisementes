@@ -12,7 +12,7 @@ namespace Sistema.Bico.Domain.Entities
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Pureza { get; set; }
-        public decimal ValorUnitarioVenda { get; set; }
+        public decimal ValorUnitarioCompra { get; set; }
         public int Tetrazolio { get; set; }
         public bool Ativo { get; set; } = true;
         public Guid FornecedorId { get; set; }
@@ -24,7 +24,7 @@ namespace Sistema.Bico.Domain.Entities
         }
 
         public void Atualizar(string nome, string descricao, string observacao, byte[] fotoBase64, TipoProduto tipoProduto,
-         decimal quantidade, decimal pureza, int tetrazolio, Guid fornecedorId,decimal valorUnitarioVenda)
+         decimal quantidade, decimal pureza, int tetrazolio, Guid fornecedorId,decimal valorUnitarioCompra)
         {
             Nome = nome;
             Descricao = descricao;
@@ -35,7 +35,7 @@ namespace Sistema.Bico.Domain.Entities
             Tetrazolio = tetrazolio;
             FornecedorId = fornecedorId;
             Update = DateTime.Now;
-            ValorUnitarioVenda = valorUnitarioVenda;
+            ValorUnitarioCompra = valorUnitarioCompra;
 
             if (fotoBase64 != null && fotoBase64.Length > 0)
                 FotoBase64 = fotoBase64;

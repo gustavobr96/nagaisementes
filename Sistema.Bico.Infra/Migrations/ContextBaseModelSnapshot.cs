@@ -254,9 +254,9 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<DateTime?>("Update")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("ValorUnitarioVenda")
+                    b.Property<decimal>("ValorUnitarioCompra")
                         .HasColumnType("decimal(18,2)")
-                        .HasColumnName("ValorUnitarioVenda");
+                        .HasColumnName("ValorUnitarioCompra");
 
                     b.HasKey("Id")
                         .HasName("PK_Produto");

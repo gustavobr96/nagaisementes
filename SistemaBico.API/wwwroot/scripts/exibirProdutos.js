@@ -92,6 +92,7 @@
         } else {
             // Se o campo estiver habilitado, oculta a mensagem
             mensagemMotivo.innerText = '';
+            CalcularTotal();
         }
 
         // Executar ação desejada, por exemplo, exibir algo no console
@@ -99,19 +100,7 @@
     });
 
     document.getElementById('txtValor').addEventListener('blur', function () {
-        // Obter os valores dos campos como números
-        var txtQuantidadeVenda = document.getElementById('txtQuantidadeVenda').value.replace(",", ".");
-        var txtValorUnitario = document.getElementById('txtValor').value;
-
-        var valorNumerico = parseFloat(txtValorUnitario.replace(/\./g, '').replace(',', '.'));
-        var multiplicadorNumerico = parseFloat(txtQuantidadeVenda.replace(/\./g, '').replace(',', '.'));
-
-
-        if (valorNumerico > 0 && multiplicadorNumerico > 0) {
-            var valorTotal = multiplicadorNumerico * valorNumerico;
-            document.getElementById('txtValorTotal').value = valorTotal
-        }
-       
+        CalcularTotal()     
     });
 
     fecharLoader();
@@ -167,6 +156,7 @@ function AtivarDesativar(id) {
 
 async function Venda(id) {
 
+    document.getElementById('ProdutoId').value = id;
     const response = await fetch('../Produtos/obter-produto/' + id);
     const data = await response.json();
 
@@ -187,6 +177,30 @@ async function Venda(id) {
 
 }
 
+function CalcularTotal() {
+
+    var txtQuantidadeVenda = document.getElementById('txtQuantidadeVenda').value.replace(",", ".");
+    var txtValorUnitario = document.getElementById('txtValor').value;
+
+    if (txtQuantidadeVenda != "" && txtValorUnitario != "") {
+
+        var valorNumerico = parseFloat(txtValorUnitario.replace(/\./g, '').replace(',', '.'));
+        var multiplicadorNumerico = parseFloat(txtQuantidadeVenda.replace(/\./g, '').replace(',', '.'));
+
+
+        if (valorNumerico > 0 && multiplicadorNumerico > 0) {
+            var valorTotal = multiplicadorNumerico * valorNumerico;
+            document.getElementById('txtValorTotal').value = valorTotal
+        } else {
+            document.getElementById('txtValorTotal').value = "";
+        }
+
+    } else {
+        document.getElementById('txtValorTotal').value = "";
+    }
+
+}
+
 function formatarNumero(numero) {
     // Converte o número para string e substitui vírgula por ponto
     var numeroFormatado = numero.toString().replace(",", ".");
@@ -194,3 +208,63 @@ function formatarNumero(numero) {
     // Formata o número com separador de milhares
     return parseFloat(numeroFormatado).toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 }
+
+document.getElementById("salvar_registro").addEventListener("click", function () {
+    SalvarRegistro();
+});
+
+async function SalvarRegistro() {
+
+    const produtoId = document.getElementById('ProdutoId').value;
+    const quantidadeVendida = document.getElementById('txtQuantidadeVenda').value;
+    const valorVendaUnitario = document.getElementById('txtValor').value;
+
+    var erros = "";
+
+    if (produtoId.length == 0) 
+        erros += "Aconceteu algum erro inesperado, por favor atualize página!</br>";
+
+    if (quantidadeVendida.length == 0)
+        erros += "A quantidade de pontos vendidas é obrigatório!</br>";
+
+
+    if (valorVendaUnitario.length == 0)
+        erros += "O valor da venda é obrigatório!</br>";
+
+
+    if (erros.length == 0) {
+        const dto = {
+            ProdutoId: produtoId,
+            QuantidadeVendida: quantidadeVendida,
+            ValorVendaUnitario: valorVendaUnitario
+        };
+
+        document.getElementById('salvar_registro').disabled = true;
+
+        const config = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dto)
+        }
+        const response = await fetch("../Venda/registrar", config)
+        const data = await response.json();
+
+        if (data == true) {
+            jQuery('#modalNovoRegistro').modal('hide');
+            toastr['success'](MSG_SUCESSO, TITULO_TOASTR_SUCESSO);
+        } else {
+            toastr['error']("Aconteceu algum erro interno, atualize a página e tente novamente!", TITULO_TOASTR_ERRO);
+        }
+
+        
+    } else {
+        toastr['error'](erros, TITULO_TOASTR_ERRO);
+    }
+
+    document.getElementById('salvar_registro').disabled = false;
+   
+}
+

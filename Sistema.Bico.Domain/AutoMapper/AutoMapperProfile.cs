@@ -32,7 +32,7 @@ namespace Sistema.Bico.Domain.AutoMapper
 
             _ = CreateMap<Venda, RegistrarVendaCommand>()
                 .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.ProdutoId))
-                .ForMember(dest => dest.Quandidade, opt => opt.MapFrom(src => src.QuantidadeVendida))
+                .ForMember(dest => dest.QuantidadeVendida, opt => opt.MapFrom(src => src.QuantidadeVendida))
                 .ReverseMap();
 
             _ = CreateMap<Fornecedor, AddFornecedorCommand>()
