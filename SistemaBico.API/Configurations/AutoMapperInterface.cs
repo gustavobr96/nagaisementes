@@ -42,8 +42,6 @@ namespace SistemaBico.API.Configurations
               .ForMember(dst => dst.Id, map => map.MapFrom(src => Guid.Parse(src.Id)));
 
             _ = CreateMap<VendaDto, RegistrarVendaCommand>()
-                .ForMember(dst => dst.QuantidadeVendida, map => map.MapFrom(src => decimal.Parse(src.QuantidadeVendida)))
-                .ForMember(dst => dst.ValorVendaUnitario, map => map.MapFrom(src => decimal.Parse(src.ValorVendaUnitario)))
                 .ForMember(dst => dst.ProdutoId, map => map.MapFrom(src => Guid.Parse(src.ProdutoId)));
         }
     }

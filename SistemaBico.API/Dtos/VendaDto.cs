@@ -5,7 +5,7 @@ namespace SistemaBico.API.Dtos
     public class VendaDto
     {
         public string ProdutoId { get; set; }
-        public string QuantidadeVendida { get; set; }
-        public string ValorVendaUnitario { get; set; }
+        public decimal QuantidadeVendida { get; set; }
+        public decimal ValorVendaUnitario { get; set; }
     }
 }

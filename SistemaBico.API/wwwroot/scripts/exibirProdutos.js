@@ -255,6 +255,7 @@ async function SalvarRegistro() {
         if (data == true) {
             jQuery('#modalNovoRegistro').modal('hide');
             toastr['success'](MSG_SUCESSO, TITULO_TOASTR_SUCESSO);
+            window.location.href = "../Produtos/listar";
         } else {
             toastr['error']("Aconteceu algum erro interno, atualize a página e tente novamente!", TITULO_TOASTR_ERRO);
         }
