@@ -9,12 +9,9 @@
     <title>@ViewData["Title"] - ZapWise.Front</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
     <!-- Theme style -->
     <link rel="stylesheet" href="~/css/adminlte.min.css">
     @*<link rel="stylesheet" href="../wwwroot/css/adminlte.min.css">*@
-
-    
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link href="~/css/toastr.min.css" rel="stylesheet" />
     <link href="~/css/card.css" rel="stylesheet" />
@@ -74,6 +71,24 @@
                                 <p>Produtos</p>
                             </a>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-bar"></i>
+                                <p>
+                                    Relatórios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Venda</p>
+                                    </a>
+                                </li>
+                                <!-- Adicione mais itens conforme necessário -->
+                            </ul>
+                        </li>
 
                     </ul>
                 </nav>
@@ -94,7 +109,6 @@
                     @RenderBody()
                 </div>
                 <!-- /.error-page -->
-
             </section>
         </div>
         <!-- Main content -->
