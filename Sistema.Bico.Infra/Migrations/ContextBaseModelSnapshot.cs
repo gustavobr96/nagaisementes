@@ -254,6 +254,10 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<DateTime?>("Update")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("ValorUnitarioVenda")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("ValorUnitarioVenda");
+
                     b.HasKey("Id")
                         .HasName("PK_Produto");
 
@@ -281,9 +285,13 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<DateTime?>("Update")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Valor")
+                    b.Property<decimal>("ValorCompraUnitario")
                         .HasColumnType("decimal(18,2)")
-                        .HasColumnName("Valor");
+                        .HasColumnName("ValorCompraUnitario");
+
+                    b.Property<decimal>("ValorVendaUnitario")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("ValorVendaUnitario");
 
                     b.HasKey("Id")
                         .HasName("PK_Venda");

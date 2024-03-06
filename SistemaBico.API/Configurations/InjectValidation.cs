@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Fornecedor;
+using Sistema.Bico.Domain.Command.Produto;
 using Sistema.Bico.Domain.Command.Validations;
 using Sistema.Bico.Domain.Command.Venda;
 using Sistema.Bico.Domain.Generics.Entities;
@@ -33,6 +34,7 @@ namespace SistemaBico.API.Configurations
             services.AddScoped<IRequestHandler<AddFornecedorCommand, Result>, RegistrarFornecedorHandler>();
             services.AddScoped<IRequestHandler<AtivarEDesativarProdutoCommand, Result>, AtivarDesativarProdutoCommandHandler>();
             services.AddScoped<IRequestHandler<EditarProdutoCommand, Result>, EditarProdutoCommandHandler>();
+            services.AddScoped<IRequestHandler<EditarFornecedorCommand, Result>, EditarFornecedorCommandHandler>();
         }
 
         public static void AddInjectRepositorys(this IServiceCollection services)

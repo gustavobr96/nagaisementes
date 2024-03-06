@@ -21,6 +21,10 @@
                             <label>Nome do produto<b class="required">*</b></label>
                             <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do produto" value="@Model.Nome" />
                         </div>
+                        <div class="form-group col-md-6">
+                            <label>Observaçao </label>
+                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas" value="@Model.Observacao" />
+                        </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Produto<b class="required">*</b></label>
                             <select class="form-control" id="Tipo" name="Tipo" asp-for="Tipo" required>
@@ -44,14 +48,6 @@
                                 }
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>Observaçao </label>
-                            <input type="text" class="form-control" name="Observacao" id="Observacao" asp-for="Observacao" maxlength="50" placeholder="Digite uma observação ex: Produto com pragas" value="@Model.Observacao" />
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Quantidade de pontos<b class="required">*</b> </label>
-                            <input type="text" required class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" value="@Model.Quantidade" />
-                        </div>
                         <div class="form-group col-md-3">
                             <label>Pureza(%)<b class="required">*</b> </label>
                             <input type="text" required class="form-control" name="Pureza" id="Pureza" asp-for="Pureza" maxlength="5" placeholder="Ex: 98,99" value="@Model.Pureza" />
@@ -59,6 +55,19 @@
                         <div class="form-group col-md-3">
                             <label>Tetrazólio(%)<b class="required">*</b></label>
                             <input type="text" required class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" value="@Model.Tetrazolio" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Quantidade de pontos<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="100" value="@Model.Quantidade" />
+                            <div id="mensagemMotivo" style="color: red; margin-top: 5px;"></div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Valor Pago(Un.)<b class="required">*</b> </label>
+                            <input type="text" required class="form-control" name="ValorUnitarioVenda" id="ValorUnitarioVenda" asp-for="ValorUnitarioVenda" maxlength="100" value="@Model.ValorUnitarioVenda" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Valor Total(R$)</label>
+                            <input type="text" class="form-control" name="txtValorTotal" id="txtValorTotal" maxlength="100" disabled/>
                         </div>
                         <div class="form-group col-md-12">
                             <label>Descricao<b class="required">*</b></label>
@@ -88,6 +97,5 @@
 
 @section Scripts {
     <script src="~/scripts/editarProduto.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }

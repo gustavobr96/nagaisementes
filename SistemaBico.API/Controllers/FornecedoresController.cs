@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Fornecedor;
+using Sistema.Bico.Domain.Command.Produto;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
+using Sistema.Bico.Infra.Repository;
 using SistemaBico.API.Dtos;
 using SistemaBico.API.Dtos.ResponseRazor;
 using System;
@@ -40,6 +43,56 @@ namespace SistemaBico.API.Controllers
 
             return View("ExibirFornecedores", new ListResponseRazor { Fornecedores = fornecedorDto });
         }
+
+        [HttpGet]
+        [Route("editar-fornecedor/{id}")]
+        public async Task<IActionResult> Editar(Guid id)
+        {
+            try
+            {
+                // Recupere os dados do produto pelo ID
+                var fornecedor = await _fornecedorRepository.GetEntityById(id);
+
+                if (fornecedor == null)
+                {
+                    return RedirectToAction("Index", "Erro", new { area = "" }); // Ou outra ação apropriada
+                }
+
+                // Mapeie o produto para um objeto ProdutoDto (se necessário)
+                var fornecedorDto = _mapper.Map<FornecedorDto>(fornecedor);
+
+                return View("EditarFornecedor", fornecedorDto);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" }); // Ou outra ação apropriada
+            }
+        }
+
+
+        [Route("atualizar")]
+        public async Task<IActionResult> Atualizar(FornecedorDto fornecedorDto)
+        {
+            try
+            {
+                var fornecedor = _mapper.Map<EditarFornecedorCommand>(fornecedorDto);
+                var model = await _mediator.Send(fornecedor);
+
+                if (model.IsSuccess)
+                {
+                    var fornecedores = await ObterFornecedores();
+                    var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
+                    return RedirectToAction("ExibirFornecedores", fornecedoresDto);
+                }
+
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+        }
+
 
         [Route("registrar")]
         public async Task<IActionResult> Registrar(FornecedorDto fornecedorDto)

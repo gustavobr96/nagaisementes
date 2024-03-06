@@ -1,10 +1,10 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model SistemaBico.API.Dtos.FornecedorDto;
+@model SistemaBico.API.Dtos.FornecedorDto
+
 @{
-    ViewData["Title"] = "Cadastro de Produtos";
+    ViewData["Title"] = "Editar Fornecedor";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
-
 
 <div class="card card-outline card-primary card-md">
     <div class="card-content">
@@ -13,36 +13,36 @@
         </div>
         <div class="card-body">
             <div class="card-body">
-                <form action="../Fornecedores/registrar" id="RegistrarFornecedores" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
+                <form action="../../Fornecedores/atualizar" id="RegistrarFornecedores" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" value="@Model.Id" />
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Nome do fornecedor* </label>
-                            <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do fornecedor" />
+                            <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="100" placeholder="Digite o nome do fornecedor" value="@Model.Nome" />
                         </div>
                         <div class="form-group col-md-4">
                             <label>Telefone* </label>
-                            <input type="text" class="form-control" required name="Telefone" id="Telefone" asp-for="Telefone" maxlength="100" placeholder="" />
+                            <input type="text" class="form-control" required name="Telefone" id="Telefone" asp-for="Telefone" maxlength="100" placeholder="" value="@Model.Telefone" />
                         </div>
                         <div class="form-group col-md-4">
                             <label>CPF/CNPJ </label>
-                            <input type="text" class="form-control" name="CpfCnpj" id="CpfCnpj" asp-for="CpfCnpj" maxlength="100" placeholder="" />
+                            <input type="text" class="form-control" name="CpfCnpj" id="CpfCnpj" asp-for="CpfCnpj" maxlength="100" placeholder="" value="@Model.CpfCnpj" />
                         </div>
-                       
+
                         <div class="form-group col-md-12">
                             <a asp-area="" asp-controller="Fornecedores" asp-action="listar" class="btn btn-primary col-md-2"> Voltar</a>
                             <button type="submit" class="btn btn-success col-md-2"> Salvar</button>
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
         <div class="card-footer">
         </div>
     </div>
 </div>
+
 @section Scripts {
-    <script src="~/scripts/novoFornecedor.js"></script>
+    <script src="~/scripts/editarFornecedor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }
-

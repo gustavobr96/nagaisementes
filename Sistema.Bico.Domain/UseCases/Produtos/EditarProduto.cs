@@ -34,7 +34,7 @@ namespace Sistema.Bico.Domain.UseCases.Produtos
 
 
                 existingProduto.Atualizar(request.Nome, request.Descricao, request.Observacao,
-                    request.FotoBase64, request.TipoProduto, request.Quantidade, request.Pureza, request.Tetrazolio, request.FornecedorId);
+                    request.FotoBase64, request.TipoProduto, request.Quantidade, request.Pureza, request.Tetrazolio, request.FornecedorId, request.ValorUnitarioVenda);
 
                 await _produtoRepository.Update(existingProduto);
 

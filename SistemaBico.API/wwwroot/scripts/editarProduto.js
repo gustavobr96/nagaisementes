@@ -1,4 +1,19 @@
 ﻿$(document).ready(function () {
+    abrirLoader();
+
+
+    $('#ValorUnitarioVenda').inputmask({
+        alias: 'numeric',
+        autoGroup: true,
+        groupSeparator: '.',
+        radixPoint: ',',  // Use ponto como separador decimal
+        digits: 2,        // Define a quantidade de casas decimais
+        digitsOptional: false,
+        placeholder: '0',
+        numericInput: true,
+        rightAlign: false
+    });
+
     $('#Quantidade').inputmask({
         alias: 'numeric',
         autoGroup: true,
@@ -33,6 +48,52 @@
         groupSize: 3 // Tamanho do grupo
     });
 
+    $('#txtValorTotal').inputmask({
+        alias: 'numeric',
+        autoGroup: true,
+        groupSeparator: ',',
+        radixPoint: '.',  // Use ponto como separador decimal
+        digits: 2,        // Define a quantidade de casas decimais
+        digitsOptional: false,
+        placeholder: '0',
+        numericInput: true,
+        rightAlign: false
+    });
+
+
+    document.getElementById('Quantidade').addEventListener('blur', function () {
+        // Obter os valores dos campos como números
+        var quantidadeCompra = document.getElementById('Quantidade').value.replace(",", ".");
+
+        var QuantidadeFormatada = parseFloat(quantidadeCompra.replace(/\./g, '').replace(',', '.'));
+
+        // Verificar as condições
+        var habilitarCampoValor = QuantidadeFormatada > 0;
+
+        // Habilitar ou desabilitar o campo txtValor
+        ValorUnitarioVenda.disabled = !habilitarCampoValor;
+
+        // Exibir ou ocultar a mensagem de motivo
+        var mensagemMotivo = document.getElementById('mensagemMotivo');
+        if (!habilitarCampoValor) {
+            document.getElementById('ValorUnitarioVenda').value = "";
+            document.getElementById('txtValorTotal').value = "";
+            // Se o campo estiver desabilitado, exibe a mensagem
+            mensagemMotivo.innerText = 'A quantidade deve ser maior que 0.';
+        } else {
+            // Se o campo estiver habilitado, oculta a mensagem
+            mensagemMotivo.innerText = '';
+            CalcularTotal();
+        }
+
+        // Executar ação desejada, por exemplo, exibir algo no console
+        console.log('Ação executada ao tirar o foco do campo txtQuantidadeVenda!');
+    });
+
+    document.getElementById('ValorUnitarioVenda').addEventListener('blur', function () {
+        // Obter os valores dos campos como números
+        CalcularTotal();
+    });
     // Ao enviar o formulário
     $('#RegistrarProdutos').submit(function (event) {
 
@@ -89,8 +150,34 @@
 
     });
 
+  
+    CalcularTotal();
+    fecharLoader();
+
 });
 
+function CalcularTotal() {
+    // Redireciona para a página de edição com o ID do produto
+    var txtQuantidadeCompra = document.getElementById('Quantidade').value.replace(",", ".");
+    var txtValorUnitario = document.getElementById('ValorUnitarioVenda').value;
+
+    if (txtValorUnitario != "" && txtQuantidadeCompra != "") {
+        var valorNumerico = parseFloat(txtValorUnitario.replace(/\./g, '').replace(',', '.'));
+        var multiplicadorNumerico = parseFloat(txtQuantidadeCompra.replace(/\./g, '').replace(',', '.'));
+
+
+        if (valorNumerico > 0 && multiplicadorNumerico > 0) {
+            var valorTotal = multiplicadorNumerico * valorNumerico;
+            document.getElementById('txtValorTotal').value = valorTotal
+        }
+        else {
+            document.getElementById('txtValorTotal').value = "";
+        }
+    } else {
+        document.getElementById('txtValorTotal').value = "";
+    }
+   
+}
 
 document.getElementById('File').addEventListener('change', function () {
     var previewImage = document.getElementById('previewImage');

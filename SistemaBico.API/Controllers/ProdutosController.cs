@@ -107,6 +107,24 @@ namespace SistemaBico.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("obter-produto/{id}")]
+        public async Task<ProdutoDto> ObterProduto(Guid id)
+        {
+            try
+            {
+                // Recupere os dados do produto pelo ID
+                var produto = await _produtoRepository.GetEntityById(id);
+                var produtoDto = _mapper.Map<ProdutoDto>(produto);
+
+                return produtoDto;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         [Route("atualizar")]
         public async Task<IActionResult> Atualizar(ProdutoDto produtoDto)
         {
@@ -154,6 +172,7 @@ namespace SistemaBico.API.Controllers
                 return Json(new { success = false });
             }
         }
+
 
         private async Task<List<Produto>> ObterProdutos()
         {

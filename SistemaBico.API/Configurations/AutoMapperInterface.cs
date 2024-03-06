@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Fornecedor;
+using Sistema.Bico.Domain.Command.Produto;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Generics.Extensions;
 using SistemaBico.API.Dtos;
@@ -19,7 +20,8 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.FotoBase64.Length > 0 ? Convert.ToBase64String(src.FotoBase64) : IMAGEM_PADRAO))
                 .ForMember(dest => dest.DataCadastro, opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")))
                 .ForMember(dest => dest.FornecedorName, opt => opt.MapFrom(src => src.Fornecedor.Nome))
-                .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.QuantidadeString, opt => opt.MapFrom(src => src.Quantidade.ToString().Replace(",",".")));
 
 
             _ = CreateMap<ProdutoDto, AddProdutoCommand>()
@@ -35,6 +37,8 @@ namespace SistemaBico.API.Configurations
 
             _ = CreateMap<Fornecedor, FornecedorDto >();
             _ = CreateMap<FornecedorDto, AddFornecedorCommand>();
+            _ = CreateMap<FornecedorDto, EditarFornecedorCommand>()
+              .ForMember(dst => dst.Id, map => map.MapFrom(src => Guid.Parse(src.Id)));
         }
     }
 }

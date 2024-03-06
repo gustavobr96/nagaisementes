@@ -16,6 +16,7 @@ namespace Sistema.Bico.Infra.Mappers
 
             builder.Property(x => x.Quantidade).HasColumnType("decimal(18, 3)").HasColumnName("Quantidade");
             builder.Property(x => x.Pureza).HasColumnType("decimal(18, 2)").HasColumnName("Pureza");
+            builder.Property(x => x.ValorUnitarioVenda).HasColumnType("decimal(18, 2)").HasColumnName("ValorUnitarioVenda");
 
             builder.HasOne(x => x.Fornecedor).WithMany().HasForeignKey(x => x.FornecedorId).OnDelete(DeleteBehavior.Restrict);
         }

@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
+                        <th scope="col">Produto</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Qtd de Pontos</th>
                         <th scope="col">Pureza(%)</th>
@@ -71,11 +71,11 @@
 
                             @if (item.Ativo)
                             {
-                                <td><button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.ProdutoId')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.ProdutoId')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye-slash"></i></button></td>
                             }
                             else
                             {
-                                <td><button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.ProdutoId')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye-slash"></i></button></td>
+                                <td><button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.ProdutoId')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.ProdutoId"><i class="fa fa-eye"></i></button></td>
                             }
                         </tr>
                     }
@@ -85,7 +85,50 @@
     </div>
 </div>
 
-
+<div class=" modal fade modal_confirm" id="modalNovaVenda">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nova Venda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nome do Produto</label>
+                            <input type="text" class="form-control" name="txtNome" id="txtNome" disabled />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Qtd de Pontos Disponível</label>
+                            <input type="text" class="form-control" name="txtQuantidade" id="txtQuantidade" disabled />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Observação</label>
+                            <input type="text" class="form-control" name="txtObservacao" id="txtObservacao"  disabled />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Qtd de Pontos Vendida</label>
+                            <input type="text" class="form-control" name="txtQuantidadeVenda" id="txtQuantidadeVenda" />
+                            <div id="mensagemMotivo" style="color: red; margin-top: 5px;"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Valor Unitário(R$)</label>
+                            <input type="text" class="form-control" name="txtValor" id="txtValor" disabled/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Valor Total(R$)</label>
+                            <input type="text" class="form-control" name="txtValorTotal" id="txtValorTotal" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="salvar_registro">Registrar</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger"> Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class=" modal fade modal_confirm" id="modalConfirmarDesativacao">
     <div class="modal-dialog modal-md">
@@ -112,4 +155,5 @@
 
 @section Scripts {
     <script src="~/scripts/exibirProdutos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 }
