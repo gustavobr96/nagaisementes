@@ -22,7 +22,10 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dest => dest.DataCadastro, opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")))
                 .ForMember(dest => dest.FornecedorName, opt => opt.MapFrom(src => src.Fornecedor.Nome))
                 .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.QuantidadeString, opt => opt.MapFrom(src => src.Quantidade.ToString().Replace(",",".")));
+                .ForMember(dest => dest.QuantidadeString, opt => opt.MapFrom(src => src.Quantidade.ToString().Replace(",", ".")));
+
+            _ = CreateMap<Venda, VendaDto>()
+                .ForMember(dest => dest.DataVenda, opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")));
 
 
             _ = CreateMap<ProdutoDto, AddProdutoCommand>()
@@ -36,13 +39,14 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dst => dst.Id, map => map.MapFrom(src => src.ProdutoId))
                 .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)));
 
-            _ = CreateMap<Fornecedor, FornecedorDto >();
+            _ = CreateMap<Fornecedor, FornecedorDto>();
             _ = CreateMap<FornecedorDto, AddFornecedorCommand>();
             _ = CreateMap<FornecedorDto, EditarFornecedorCommand>()
               .ForMember(dst => dst.Id, map => map.MapFrom(src => Guid.Parse(src.Id)));
 
             _ = CreateMap<VendaDto, RegistrarVendaCommand>()
-                .ForMember(dst => dst.ProdutoId, map => map.MapFrom(src => Guid.Parse(src.ProdutoId)));
+                .ForMember(dst => dst.ProdutoId, map => map.MapFrom(src => Guid.Parse(src.ProdutoId)))
+                .ForMember(dst => dst.ValorVendaUnitario, map => map.MapFrom(src => Decimal.Parse(src.ValorVendaUnitario)));
         }
     }
 }

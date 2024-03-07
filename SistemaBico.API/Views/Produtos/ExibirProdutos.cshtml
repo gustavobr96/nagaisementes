@@ -25,6 +25,7 @@
                         <th scope="col">Produto</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Qtd de Pontos</th>
+                        <th scope="col">Valor Pago(Un)</th>
                         <th scope="col">Pureza(%)</th>
                         <th scope="col">Tetrazólio(%)</th>
                         <th scope="col">Fornecedor</th>
@@ -46,6 +47,7 @@
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
                             <td>@String.Format("{0:#,##0}", decimal.Parse(item.Quantidade.ToString().Replace(",", "."), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))) </td>
+                            <td>@String.Format("{0:C}", item.ValorUnitarioCompra)</td>
                             <td>@item.Pureza%</td>
                             <td>@item.Tetrazolio%</td>
                             <td>@item.FornecedorName</td>

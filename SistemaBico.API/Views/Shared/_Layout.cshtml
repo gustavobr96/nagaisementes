@@ -1,12 +1,11 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ZapWise.Front</title>
+    <title>AgroSystem -  Sistema Agro</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Theme style -->
@@ -19,7 +18,7 @@
     <link href="~/css/datatable.css" rel="stylesheet" />
     <link href="~/css/tabelaonoff.css" rel="stylesheet" />
     <!-- Adicione a folha de estilo do Bootstrap -->
-    <title>Gestão WhatsApp | ZapWise</title>
+    <title>Gestão | Sistema Agro</title>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -49,7 +48,7 @@
             <!-- Brand Logo -->
             <a href="~/." class="brand-link">
                 <img src="~/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">ZapWise</span>
+                <span class="brand-text font-weight-light">AgroSystem</span>
             </a>
 
             <!-- Sidebar -->
@@ -81,7 +80,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a asp-controller="Venda" asp-action="listar" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Venda</p>
                                     </a>
@@ -118,7 +117,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2022 Wise Agência</strong> All rights reserved.
+        <strong>Copyright &copy; 2024 AgroSystem</strong> All rights reserved.
     </footer>
 
     <!-- jQuery -->
@@ -145,4 +144,3 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-

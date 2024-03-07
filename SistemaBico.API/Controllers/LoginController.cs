@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Sistema.Bico.Domain.Generics.Entities;
 using Sistema.Bico.Domain.Generics.Interfaces;
+using Sistema.Bico.Domain.Response;
+using SistemaBico.API.Configurations;
 using SistemaBico.API.Dtos;
 using System.Threading.Tasks;
 
@@ -38,12 +40,21 @@ namespace SistemaBico.API.Controllers
             var result = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, false, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                await _token.GerarJwt(dto.Email);
+                var loginResponse = await _token.GerarJwt(dto.Email);
+                await new AuthenticateService().Login(HttpContext, loginResponse);
                 return RedirectToAction("listar", "Produtos", new { area = "" });
+
             }
 
             ModelState.AddModelError(string.Empty, "Senha ou E-mail inválidos.");
             return View("index", dto);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logoff()
+        {
+            await new AuthenticateService().Logoff(HttpContext);
+            return RedirectToAction("Index", "Login", new { area = "" });
         }
     }
 }

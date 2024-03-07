@@ -268,4 +268,3 @@ async function SalvarRegistro() {
     document.getElementById('salvar_registro').disabled = false;
    
 }
-

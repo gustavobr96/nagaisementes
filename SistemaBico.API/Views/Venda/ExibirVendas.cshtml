@@ -1,0 +1,92 @@
+﻿@model SistemaBico.API.Dtos.ResponseRazor.ListResponseRazor;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Relatório de Vendas";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" action="@Url.Action("listar", "Venda")">
+            <div class="form-row">
+                <div class="col-md-4 mb-2">
+                    <label for="dataInicial">Data Inicial</label>
+                    <input type="date" class="form-control" id="dataInicial" name="dataInicial" value="@ViewBag.DataInicio" pattern="\d{4}-\d{2}-\d{2}" />
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="dataFinal">Data Final</label>
+                    <input type="date" class="form-control" id="dataFinal" name="dataFinal" value="@ViewBag.DataFim" pattern="\d{4}-\d{2}-\d{2}" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-filter"></i> Filtrar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-white font-weight-bold">
+        Venda(s) Realizada(s) - Filtro realizado de - @ViewBag.DataInicio até @ViewBag.DataFim
+    </div>
+    <div class="card-body">
+        <div class="table-responsive" id="destroy">
+            <table class="table table-striped" id="VendasCadastradas">
+                <thead>
+                    <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Tipo Produto</th>
+                        <th scope="col">Qtd. de Pontos</th>
+                        <th scope="col">Valor Pago(Un.)</th>
+                        <th scope="col">Valor Venda(Un.)</th>
+                        <th scope="col">Pureza(%)</th>
+                        <th scope="col">Tetrazólio(%)</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col">Data da Venda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Vendas)
+                    {
+                        <tr class="table-row">
+                            <td>@item.Produto.Nome</td>
+                            <td>@item.Produto.TipoProduto</td>
+                            <td>@String.Format("{0:#,##0}", decimal.Parse(item.QuantidadeVendida.ToString().Replace(",", "."), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))) </td>
+                            <td>@String.Format("{0:C}", item.ValorCompraUnitario)</td>
+                            <td>@String.Format("{0:C}", item.ValorVendaUnitario)</td>
+                            <td>@item.Produto.Pureza%</td>
+                            <td>@item.Produto.Tetrazolio%</td>
+                            <td>@item.Produto.FornecedorName</td>
+                            <td>@item.Produto.Observacao</td>
+                            <td>@item.DataVenda</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="totalValue" class="mr-2">Valor Bruto de Vendas:</label>
+                <input type="text" id="totalValue" class="form-control" readonly value="R$ @String.Format("{0:C}", @ViewBag.ValorVendaTotal)">
+            </div>
+            <div class="col-md-6">
+                <label for="totalProfit" class="mr-2">Lucro Total:</label>
+                <input type="text" id="totalProfit" class="form-control" readonly value="R$ @String.Format("{0:C}", @ViewBag.LucroTotal)">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        abrirLoader();
+        fecharLoader();
+    </script>
+}
