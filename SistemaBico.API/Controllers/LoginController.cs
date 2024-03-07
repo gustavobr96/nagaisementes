@@ -51,6 +51,7 @@ namespace SistemaBico.API.Controllers
         }
 
         [Authorize]
+        [Route("Logoff")]
         public async Task<IActionResult> Logoff()
         {
             await new AuthenticateService().Logoff(HttpContext);

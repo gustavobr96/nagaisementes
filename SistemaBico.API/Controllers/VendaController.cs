@@ -13,9 +13,11 @@ using Sistema.Bico.Domain.Entities;
 using System.Linq;
 using Sistema.Bico.Domain.Generics.Helpers;
 using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaBico.API.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class VendaController : Controller
     {

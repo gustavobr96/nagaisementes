@@ -1,8 +1,10 @@
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -119,40 +121,15 @@ namespace Sistema.Bico.API
                 });
             });
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                     .AddJwtBearer(option =>
-                     {
-                         option.TokenValidationParameters = new TokenValidationParameters
-                         {
-                             ValidateIssuer = false,
-                             ValidateAudience = false,
-                             ValidateLifetime = true,
-                             ValidateIssuerSigningKey = true,
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = new PathString("/Login/Index/"); //401 - Unauthorized
+                options.AccessDeniedPath = new PathString("/Login/Index/"); //403 - Forbidden
+            });
 
-                             ValidIssuer = "Bico.Securiry.Bearer",
-                             ValidAudience = "Bico.Securiry.Bearer",
-                             IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-AESKPERSK2816762")
-                         };
-
-                         option.Events = new JwtBearerEvents
-                         {
-                             OnAuthenticationFailed = context =>
-                             {
-                                 Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-                                 return Task.CompletedTask;
-                             },
-                             OnTokenValidated = context =>
-                             {
-                                 Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-                                 return Task.CompletedTask;
-                             }
-                         };
-                     });
 
             services.AddSwaggerGenNewtonsoftSupport();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

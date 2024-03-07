@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Entities;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBico.API.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class ProdutosController : Controller
     {
