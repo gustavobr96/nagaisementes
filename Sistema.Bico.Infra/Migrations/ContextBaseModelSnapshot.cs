@@ -278,6 +278,9 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<Guid>("ProdutoId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ProdutoJson")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("QuantidadeVendida")
                         .HasColumnType("decimal(18,3)")
                         .HasColumnName("QuantidadeVendida");

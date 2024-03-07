@@ -124,8 +124,8 @@ namespace Sistema.Bico.API
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = new PathString("/Login/Index/"); //401 - Unauthorized
-                options.AccessDeniedPath = new PathString("/Login/Index/"); //403 - Forbidden
+                options.LoginPath = new PathString("/Login"); //401 - Unauthorized
+                options.AccessDeniedPath = new PathString("/Login"); //403 - Forbidden
             });
 
 

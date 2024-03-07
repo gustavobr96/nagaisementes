@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240306013117_1")]
+    [Migration("20240307003249_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,6 +279,9 @@ namespace Sistema.Bico.Infra.Migrations
 
                     b.Property<Guid>("ProdutoId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ProdutoJson")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("QuantidadeVendida")
                         .HasColumnType("decimal(18,3)")

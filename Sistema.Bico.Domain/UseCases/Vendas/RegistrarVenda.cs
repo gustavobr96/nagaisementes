@@ -1,6 +1,7 @@
 ﻿using Ardalis.Result;
 using AutoMapper;
 using MediatR;
+using Newtonsoft.Json;
 using Sistema.Bico.Domain.Command.Venda;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
@@ -37,7 +38,9 @@ namespace Sistema.Bico.Domain.UseCases.Vendas
 
 
                 var venda = _mapper.Map<Venda>(request);
+
                 venda.ValorCompraUnitario = produto.ValorUnitarioCompra;
+                venda.SerializarProdutoJson(produto);
 
                 produto.RealizarVenda(request.QuantidadeVendida);
 

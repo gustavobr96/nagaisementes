@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 using Sistema.Bico.Domain.Entities;
 
 namespace Sistema.Bico.Infra.Mappers
