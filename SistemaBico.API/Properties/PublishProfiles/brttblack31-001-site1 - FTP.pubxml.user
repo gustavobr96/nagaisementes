@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <History>False|2024-03-09T18:15:27.1457063Z;</History>
+    <LastFailureDetails />
+    <_PublishTargetUrl>ftp://win5155.site4now.net:21/site1</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>03/09/2024 15:08:05</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>03/09/2024 15:08:11</publishTime>
+    </File>
+    <File Include="EasyNetQ.dll">
+      <publishTime>12/22/2022 18:55:56</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authentication.JwtBearer.dll">
+      <publishTime>06/22/2022 19:50:28</publishTime>
+    </File>
+    <File Include="Microsoft.Data.SqlClient.dll">
+      <publishTime>09/20/2021 20:59:32</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>03/30/2021 16:46:46</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>03/30/2021 16:58:02</publishTime>
+    </File>
+    <File Include="Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/31/2023 12:02:56</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.Bson.dll">
+      <publishTime>11/27/2018 21:10:18</publishTime>
+    </File>
+    <File Include="RabbitMQ.Client.dll">
+      <publishTime>06/15/2022 14:56:18</publishTime>
+    </File>
+    <File Include="Sistema.Bico.Domain.pdb">
+      <publishTime>03/09/2024 14:54:32</publishTime>
+    </File>
+    <File Include="Sistema.Bico.Infra.pdb">
+      <publishTime>03/09/2024 15:08:22</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -9,6 +9,7 @@ using SistemaBico.API.Dtos;
 using SistemaBico.API.Dtos.ResponseRazor;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -58,6 +59,7 @@ namespace SistemaBico.API.Controllers
         [Route("registrar")]
         public async Task<IActionResult> Registrar(ProdutoDto produtoDto)
         {
+
             var produto = _mapper.Map<AddProdutoCommand>(produtoDto);
 
             try
