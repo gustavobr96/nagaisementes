@@ -1,0 +1,38 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SistemaBico.API.Dtos.MenuDto;
+@{
+    ViewData["Title"] = "Cadastro de Menu";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+<div class="card card-outline card-primary card-md">
+    <div class="card-content">
+        <div class="card-header">
+            <h4 class="modal-title">Inserir Menu</h4>
+        </div>
+        <div class="card-body">
+            <div class="card-body">
+                <form action="../Menus/registrar" id="RegistrarMenus" class="form d-flex flex-column flex-lg-row" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Nome do menu* </label>
+                            <input type="text" class="form-control" required name="Nome" id="Nome" asp-for="Nome" maxlength="30" placeholder="Digite o nome do menu" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <a asp-area="" asp-controller="Menus" asp-action="listar" class="btn btn-primary col-md-5"> Voltar</a>
+                            <button type="submit" class="btn btn-success col-md-5"> Salvar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/scripts/novoMenu.js"></script>
+}
+

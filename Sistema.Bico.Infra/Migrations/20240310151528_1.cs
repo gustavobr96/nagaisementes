@@ -55,6 +55,21 @@ namespace Sistema.Bico.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Menu",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Update = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menu", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -121,8 +136,10 @@ namespace Sistema.Bico.Infra.Migrations
                     Pureza = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ValorUnitarioCompra = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Tetrazolio = table.Column<int>(type: "int", nullable: false),
+                    Lote = table.Column<int>(type: "int", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
                     FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MenuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -133,6 +150,12 @@ namespace Sistema.Bico.Infra.Migrations
                         name: "FK_Produto_Fornecedor_FornecedorId",
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedor",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Produto_Menu_MenuId",
+                        column: x => x.MenuId,
+                        principalTable: "Menu",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -296,6 +319,11 @@ namespace Sistema.Bico.Infra.Migrations
                 column: "FornecedorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Produto_MenuId",
+                table: "Produto",
+                column: "MenuId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Venda_ProdutoId",
                 table: "Venda",
                 column: "ProdutoId");
@@ -335,6 +363,9 @@ namespace Sistema.Bico.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "Fornecedor");
+
+            migrationBuilder.DropTable(
+                name: "Menu");
         }
     }
 }

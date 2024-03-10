@@ -210,6 +210,30 @@ namespace Sistema.Bico.Infra.Migrations
                     b.ToTable("Fornecedor", (string)null);
                 });
 
+            modelBuilder.Entity("Sistema.Bico.Domain.Entities.Menu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Update")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Menu");
+
+                    b.ToTable("Menu", (string)null);
+                });
+
             modelBuilder.Entity("Sistema.Bico.Domain.Entities.Produto", b =>
                 {
                     b.Property<Guid>("Id")
@@ -230,6 +254,12 @@ namespace Sistema.Bico.Infra.Migrations
 
                     b.Property<byte[]>("FotoBase64")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("Lote")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("MenuId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -262,6 +292,8 @@ namespace Sistema.Bico.Infra.Migrations
                         .HasName("PK_Produto");
 
                     b.HasIndex("FornecedorId");
+
+                    b.HasIndex("MenuId");
 
                     b.ToTable("Produto", (string)null);
                 });
@@ -434,7 +466,15 @@ namespace Sistema.Bico.Infra.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Sistema.Bico.Domain.Entities.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Fornecedor");
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("Sistema.Bico.Domain.Entities.Venda", b =>

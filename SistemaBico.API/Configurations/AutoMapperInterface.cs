@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Fornecedor;
+using Sistema.Bico.Domain.Command.Menu;
 using Sistema.Bico.Domain.Command.Produto;
 using Sistema.Bico.Domain.Command.Venda;
 using Sistema.Bico.Domain.Entities;
@@ -40,6 +41,7 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)));
 
             _ = CreateMap<Fornecedor, FornecedorDto>();
+
             _ = CreateMap<FornecedorDto, AddFornecedorCommand>();
             _ = CreateMap<FornecedorDto, EditarFornecedorCommand>()
               .ForMember(dst => dst.Id, map => map.MapFrom(src => Guid.Parse(src.Id)));
@@ -47,6 +49,11 @@ namespace SistemaBico.API.Configurations
             _ = CreateMap<VendaDto, RegistrarVendaCommand>()
                 .ForMember(dst => dst.ProdutoId, map => map.MapFrom(src => Guid.Parse(src.ProdutoId)))
                 .ForMember(dst => dst.ValorVendaUnitario, map => map.MapFrom(src => Decimal.Parse(src.ValorVendaUnitario)));
+
+            _ = CreateMap<MenuDto, EditarMenuCommand>();
+
+            _ = CreateMap<Menu, MenuDto>();
+            _ = CreateMap<MenuDto, AddMenuCommand>();
         }
     }
 }

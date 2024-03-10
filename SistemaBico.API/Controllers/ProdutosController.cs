@@ -52,6 +52,8 @@ namespace SistemaBico.API.Controllers
             var produtos = await ObterProdutos();
             var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
 
+
+
             return View("ExibirProdutos", new ListResponseRazor { Produtos = produtosDto });
         }
 

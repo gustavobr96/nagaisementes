@@ -1,0 +1,64 @@
+﻿@model SistemaBico.API.Dtos.ResponseRazor.ListResponseRazor;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Cadastro de Menus";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+<div class="card mb-4">
+    <div class="card-body">
+        <a asp-area="" asp-controller="Menus" asp-action="novo-menu" class="btn btn-success"><i class="fa fa-plus pull-right"></i> Adicionar Menu</a>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-white font-weight-bold">
+        Menu(s) Cadastrado(s)
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive" id="destroy">
+            <table class="table table-striped" id="MenusCadastrados">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Ativo</th>
+                        <th scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Menus)
+                    {
+                        <tr>
+                            <td>@item.Nome</td>
+                            @if (item.Ativo)
+                            {
+                                <td>Ativo</td>
+                            }
+                            else
+                            {
+                                <td>Desativado</td>
+                            }
+                            <td>
+                                <button class="btn btn-icon btn-primary" id="btnEditar" onclick="Alterar('@item.Id')"><i class="fa fa-edit"></i></button>
+                            
+                            @if (item.Ativo)
+                            {
+                                <button class="btn btn-icon btn-warning" onclick="AtivarDesativar('@item.Id')" id=" btnR" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.Id"><i class="fa fa-eye-slash"></i></button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-icon btn-warning btn-desativado" onclick="AtivarDesativar('@item.Id')" id="btnRemover" data-toggle="modal" data-target="#modalConfirmarDesativacao" data-produto-id="@item.Id"><i class="fa fa-eye"></i></button>
+                            }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/scripts/exibirMenus.js"></script>
+}

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
-using Sistema.Bico.Infra.Repository;
 using SistemaBico.API.Dtos;
 using SistemaBico.API.Dtos.ResponseRazor;
 using System.Collections.Generic;

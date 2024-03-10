@@ -31,6 +31,7 @@ namespace Sistema.Bico.Infra.Context
             builder.ApplyConfiguration(new ClientMap());
             builder.ApplyConfiguration(new ApplicationUserMap());
             builder.ApplyConfiguration(new ProdutoMap());
+            builder.ApplyConfiguration(new MenuMap());
             builder.ApplyConfiguration(new VendaMap());
             builder.ApplyConfiguration(new FornecedorMap());
 

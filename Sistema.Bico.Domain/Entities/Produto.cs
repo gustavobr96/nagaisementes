@@ -14,8 +14,11 @@ namespace Sistema.Bico.Domain.Entities
         public decimal Pureza { get; set; }
         public decimal ValorUnitarioCompra { get; set; }
         public int Tetrazolio { get; set; }
+        public int Lote { get; set; }
         public bool Ativo { get; set; } = true;
         public Guid FornecedorId { get; set; }
+        public Guid MenuId { get; set; }
+        public Menu Menu { get; set; }
         public Fornecedor Fornecedor { get; set; }
 
         public void RealizarVenda(decimal quantidadeVendida)

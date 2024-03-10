@@ -118,11 +118,6 @@
             isValid = false;
         }
 
-        // Validar Descrição
-        if ($('#Descricao').val().trim() === '') {
-            $('#Descricao').after('<div class="text-danger error-message">Campo obrigatório.</div>');
-            isValid = false;
-        }
 
         if ($('#Quantidade').val().trim() === '') {
             $('#Quantidade').after('<div class="text-danger error-message">Campo obrigatório.</div>');
