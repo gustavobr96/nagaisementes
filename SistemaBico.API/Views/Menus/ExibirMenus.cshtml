@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach (var item in Model.Menus)
                     {
-                        <tr>
+                        <tr class="table-row @(item.Ativo ? "" : "table-disabled-row")">
                             <td>@item.Nome</td>
                             @if (item.Ativo)
                             {
@@ -56,6 +56,29 @@
                     }
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class=" modal fade modal_confirm" id="modalConfirmarDesativacao">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" id="divcontent">
+            <div class="modal-header">
+                <h4 class="modal-title"> Ativar/Desativar registro</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    A confirmação resultará na: <br />
+                    <b>Ativação</b>(o menu ficará disponivel para o público)<br />
+                    <b>Inativação</b>(o menu não será mais visto para o público).<br />
+                    <br /><br />
+                    <b>Tem certeza que deseja concluir a ação ?</b>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="delete_registro">SIM</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger">NÃO</button>
+            </div>
         </div>
     </div>
 </div>

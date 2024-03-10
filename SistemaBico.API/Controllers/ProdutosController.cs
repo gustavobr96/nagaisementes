@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Entities;
 using Sistema.Bico.Domain.Interface;
+using Sistema.Bico.Infra.Repository;
 using SistemaBico.API.Dtos;
 using SistemaBico.API.Dtos.ResponseRazor;
 using System;
@@ -22,17 +23,20 @@ namespace SistemaBico.API.Controllers
         private readonly IMediator _mediator;
         private readonly IProdutoRepository _produtoRepository;
         private readonly IFornecedorRepository _fornecedorRepository;
+        private readonly IMenuRepository _menuRepository;
         private readonly IMapper _mapper;
 
         public ProdutosController(IMediator mediator,
             IProdutoRepository produtoRepository,
             IMapper mapper,
-            IFornecedorRepository fornecedorRepository)
+            IFornecedorRepository fornecedorRepository,
+            IMenuRepository menuRepository)
         {
             _mediator = mediator;
             _produtoRepository = produtoRepository;
             _mapper = mapper;
             _fornecedorRepository = fornecedorRepository;
+            _menuRepository = menuRepository;
         }
 
 
@@ -40,9 +44,12 @@ namespace SistemaBico.API.Controllers
         public async Task<IActionResult> Index()
         {
             var fornecedores = await _fornecedorRepository.GetAll();
+            var menus = await _menuRepository.GetAll();
             var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
+            var menusDto = _mapper.Map<List<MenuDto>>(menus);
 
             ViewBag.Fornecedores = fornecedoresDto;
+            ViewBag.Menus = menusDto;
             return View("NovoProduto");
         }
 
@@ -101,9 +108,12 @@ namespace SistemaBico.API.Controllers
 
                 // Obtenha a lista de fornecedores (se necessário)
                 var fornecedores = await _fornecedorRepository.GetAll();
+                var menus = await _menuRepository.GetAll();
                 var fornecedoresDto = _mapper.Map<List<FornecedorDto>>(fornecedores);
+                var menusDto = _mapper.Map<List<MenuDto>>(menus);
 
                 ViewBag.Fornecedores = fornecedoresDto;
+                ViewBag.Menus = menusDto;
 
                 return View("EditarProduto", produtoDto);
             }
@@ -179,8 +189,8 @@ namespace SistemaBico.API.Controllers
             }
         }
 
-
-        private async Task<List<Produto>> ObterProdutos()
+        [HttpGet("ObterProdutos")]
+        public async Task<List<Produto>> ObterProdutos()
         {
             return await _produtoRepository.ObterTodosProdutoEFornecedor();
         }

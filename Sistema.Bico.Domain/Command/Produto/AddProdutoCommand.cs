@@ -15,7 +15,9 @@ namespace Sistema.Bico.Domain.Command
         public decimal ValorUnitarioCompra { get; set; }
         public decimal Pureza { get; set; }
         public Guid FornecedorId { get; set; }
+        public Guid MenuId { get; set; }
         public string Observacao { get; set; }
+        public string Lote { get; set; }
         public int Tetrazolio { get; set; }
     }
 }

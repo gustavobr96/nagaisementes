@@ -120,6 +120,10 @@
             isValid = false;
         }
 
+        if ($('#MenuId').val() === "") {
+            $('#MenuId').after('<div class="text-danger error-message">Selecione um menu.</div>');
+            isValid = false;
+        }
 
         if ($('#Quantidade').val().trim() === '') {
             $('#Quantidade').after('<div class="text-danger error-message">Campo obrigatório.</div>');

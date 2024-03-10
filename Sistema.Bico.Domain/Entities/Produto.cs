@@ -6,15 +6,15 @@ namespace Sistema.Bico.Domain.Entities
     public class Produto : Base
     {
         public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public string Observacao { get; set; }
+        public string Descricao { get; set; } = string.Empty;
+        public string Observacao { get; set; } = string.Empty;
         public byte[] FotoBase64 { get; set; }
         public TipoProduto TipoProduto { get; set; }
         public decimal Quantidade { get; set; }
         public decimal Pureza { get; set; }
         public decimal ValorUnitarioCompra { get; set; }
         public int Tetrazolio { get; set; }
-        public int Lote { get; set; }
+        public string Lote { get; set; } = string.Empty;
         public bool Ativo { get; set; } = true;
         public Guid FornecedorId { get; set; }
         public Guid MenuId { get; set; }
@@ -27,7 +27,7 @@ namespace Sistema.Bico.Domain.Entities
         }
 
         public void Atualizar(string nome, string descricao, string observacao, byte[] fotoBase64, TipoProduto tipoProduto,
-         decimal quantidade, decimal pureza, int tetrazolio, Guid fornecedorId,decimal valorUnitarioCompra)
+         decimal quantidade, decimal pureza, int tetrazolio, Guid fornecedorId,decimal valorUnitarioCompra, Guid menuId, string lote)
         {
             Nome = nome;
             Descricao = descricao;
@@ -39,6 +39,8 @@ namespace Sistema.Bico.Domain.Entities
             FornecedorId = fornecedorId;
             Update = DateTime.Now;
             ValorUnitarioCompra = valorUnitarioCompra;
+            MenuId = menuId;
+            Lote = lote;
 
             if (fotoBase64 != null && fotoBase64.Length > 0)
                 FotoBase64 = fotoBase64;

@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240310151528_1")]
+    [Migration("20240310191502_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -257,8 +257,8 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<byte[]>("FotoBase64")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("Lote")
-                        .HasColumnType("int");
+                    b.Property<string>("Lote")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("MenuId")
                         .HasColumnType("uniqueidentifier");

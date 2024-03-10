@@ -45,6 +45,7 @@
                         <th scope="col">Valor Venda(Un.)</th>
                         <th scope="col">Pureza(%)</th>
                         <th scope="col">Tetrazólio(%)</th>
+                        <th scope="col">Lote</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Observação</th>
                         <th scope="col">Data da Venda</th>
@@ -61,6 +62,7 @@
                             <td>@String.Format("{0:C}", item.ValorVendaUnitario)</td>
                             <td>@item.Produto.Pureza%</td>
                             <td>@item.Produto.Tetrazolio%</td>
+                            <td>@item.Produto.Lote</td>
                             <td>@item.Produto.FornecedorName</td>
                             <td>@item.Produto.Observacao</td>
                             <td>@item.DataVenda</td>

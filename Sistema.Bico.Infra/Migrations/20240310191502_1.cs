@@ -136,7 +136,7 @@ namespace Sistema.Bico.Infra.Migrations
                     Pureza = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ValorUnitarioCompra = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Tetrazolio = table.Column<int>(type: "int", nullable: false),
-                    Lote = table.Column<int>(type: "int", nullable: false),
+                    Lote = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
                     FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MenuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),

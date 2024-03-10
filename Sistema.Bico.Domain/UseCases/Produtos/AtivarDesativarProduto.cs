@@ -11,14 +11,11 @@ namespace Sistema.Bico.Domain.UseCases.Produtos
 {
     public class AtivarDesativarProdutoCommandHandler : IRequestHandler<AtivarEDesativarProdutoCommand, Result>
     {
-        private readonly IMapper _mapper;
         private readonly IProdutoRepository _produtoRepository;
 
-        public AtivarDesativarProdutoCommandHandler(IMapper mapper,
-            IProdutoRepository produtoRepository)
+        public AtivarDesativarProdutoCommandHandler(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
-            _mapper = mapper;
         }
 
         public async Task<Result> Handle(AtivarEDesativarProdutoCommand request, CancellationToken cancellationToken)

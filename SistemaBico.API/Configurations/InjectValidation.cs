@@ -35,6 +35,7 @@ namespace SistemaBico.API.Configurations
             services.AddScoped<IRequestHandler<RegistrarVendaCommand, Result>, RegistrarVendaCommandHandler>();
             services.AddScoped<IRequestHandler<AddFornecedorCommand, Result>, RegistrarFornecedorHandler>();
             services.AddScoped<IRequestHandler<AtivarEDesativarProdutoCommand, Result>, AtivarDesativarProdutoCommandHandler>();
+            services.AddScoped<IRequestHandler<AtivarEDesativarMenuCommand, Result>, AtivarDesativarMenuCommandHandler>();
             services.AddScoped<IRequestHandler<EditarProdutoCommand, Result>, EditarProdutoCommandHandler>();
             services.AddScoped<IRequestHandler<EditarFornecedorCommand, Result>, EditarFornecedorCommandHandler>();
             services.AddScoped<IRequestHandler<AddMenuCommand, Result>, RegistrarMenuHandler>();

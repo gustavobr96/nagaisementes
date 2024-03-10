@@ -50,6 +50,16 @@
                             <input type="text" required class="form-control" name="Tetrazolio" id="Tetrazolio" asp-for="Tetrazolio" maxlength="2" placeholder="Ex: 50" />
                         </div>
                         <div class="form-group col-md-3">
+                            <label>Menu<b class="required">*</b> </label>
+                            <select class="form-control" id="MenuId" name="MenuId" asp-for="MenuId">
+                                <option value="" selected>Selecione um menu</option>
+                                @foreach (var menu in ViewBag.Menus)
+                                {
+                                    <option value="@menu.Id">@menu.Nome</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
                             <label>Quantidade de pontos<b class="required">*</b> </label>
                             <input type="text" required class="form-control" name="Quantidade" id="Quantidade" asp-for="Quantidade" maxlength="11" />
                             <div id="mensagemMotivo" style="color: red; margin-top: 5px;"></div>
@@ -62,11 +72,12 @@
                             <label>Valor Total Pago(R$)</label>
                             <input type="text" class="form-control" name="txtValorTotal" id="txtValorTotal" maxlength="100" disabled />
                         </div>
-                        <div class="form-group col-md-12">
-                            <label>Descricao</label>
-                            <textarea class="form-control" required rows="6" Name="Descricao" asp-for="Descricao" placeholder="Digite sua descrição aqui..."></textarea>
+                        <div class="form-group col-md-3">
+                            <label>Lote </label>
+                            <input type="text" class="form-control" name="Lote" id="Lote" asp-for="Lote" maxlength="6" placeholder="Digite o lote" />
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-9"></div>
+                        <div class="form-group col-md-3">
                             <label>Imagem do Produto</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="File" accept=".png, .jpg, .jpeg" asp-for="File" name="File">

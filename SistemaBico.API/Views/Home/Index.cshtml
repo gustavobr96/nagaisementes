@@ -78,6 +78,40 @@
             .btn-contato:hover {
                 color: #fff; /* Substitua "yourDesiredColor" pela cor desejada para o estado de hover */
             }
+
+
+
+        .food_section {
+            text-align: center;
+        }
+
+        .menu-item {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Ajustes para melhorar a aparência */
+        .dropdown-menu {
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sementes-menu {
+            padding: 10px; /* Espaçamento interno */
+            max-height: 300px; /* Altura máxima do submenu antes de adicionar uma barra de rolagem */
+            overflow-y: auto; /* Adiciona uma barra de rolagem quando necessário */
+            background-color: #f8f9fa; /* Cor de fundo */
+            border: 1px solid #ced4da; /* Borda */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+
+            .sementes-menu .dropdown-item {
+                font-size: 14px; /* Tamanho da fonte */
+                color: #495057; /* Cor do texto */
+            }
     </style>
 </head>
 
@@ -178,11 +212,26 @@
                     Nossos Produtos
                 </h2>
             </div>
+            @if(Model.Menus.Count > 0){
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menu de Sementes
+                    </button>
+                    <div class="dropdown-menu sementes-menu" aria-labelledby="categoryDropdown">
+                        <a class="dropdown-item" href="#" onclick="filterMenu(event, 'all')">Todas</a>
+                        @foreach(var menu in Model.Menus)
+                        {
+                            <a class="dropdown-item" href="#" onclick="filterMenu(event, '@menu.Id')">@menu.Nome</a>
+                        }
+                     
+                    </div>
+                </div>
+            }
             <div class="filters-content mb-3">
                 <div class="row grid">
                     @foreach (var item in Model.Produtos)
                     {
-                        <div class="col-sm-6 col-lg-5 all pizza">
+                        <div class="col-sm-6 col-lg-4 all menu-item @item.MenuId">
                             <div class="box">
                                 <div class="img-box">
                                     <img src="data:image/png;base64,@item.FotoBase64" alt="">
@@ -198,9 +247,12 @@
                                         <p>
                                             Tetrazolio: <b>@item.Tetrazolio%</b>
                                         </p>
+                                        <p>
+                                            Lote: <b>@item.Lote</b>
+                                        </p>
                                     </div>
                                     <p>
-                                        @item.Descricao
+                                        @item.Observacao
                                     </p>
                                     <div style="text-align: center; margin-top: 10px;">
                                         <a href="#" class="btn-contato">Realizar Orçamento</a>
@@ -210,8 +262,6 @@
                         </div>
 
                     }
-
-
                 </div>
             </div>
         </div>
@@ -404,7 +454,7 @@
     <!-- custom js -->
     <script src="../../../SitePrincipal/js/custom.js"></script>
     <!-- End Google Map -->
-
+  
 </body>
 
 </html>

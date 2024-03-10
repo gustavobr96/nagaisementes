@@ -22,6 +22,7 @@ namespace SistemaBico.API.Configurations
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.FotoBase64.Length > 0 ? Convert.ToBase64String(src.FotoBase64) : IMAGEM_PADRAO))
                 .ForMember(dest => dest.DataCadastro, opt => opt.MapFrom(src => src.Created.ToString("dd/MM/yyyy")))
                 .ForMember(dest => dest.FornecedorName, opt => opt.MapFrom(src => src.Fornecedor.Nome))
+                .ForMember(dest => dest.MenuName, opt => opt.MapFrom(src => src.Menu.Nome))
                 .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.QuantidadeString, opt => opt.MapFrom(src => src.Quantidade.ToString().Replace(",", ".")));
 
@@ -32,13 +33,15 @@ namespace SistemaBico.API.Configurations
             _ = CreateMap<ProdutoDto, AddProdutoCommand>()
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.File != null ? ConvertGeneric.IFormFileToBase64(src.File) : null))
                 .ForMember(dst => dst.TipoProduto, map => map.MapFrom(src => src.Tipo))
-                .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)));
+                .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)))
+                .ForMember(dst => dst.MenuId, map => map.MapFrom(src => Guid.Parse(src.MenuId)));
 
             _ = CreateMap<ProdutoDto, EditarProdutoCommand>()
                 .ForMember(dst => dst.FotoBase64, map => map.MapFrom(src => src.File != null ? ConvertGeneric.IFormFileToBase64(src.File) : null))
                 .ForMember(dst => dst.TipoProduto, map => map.MapFrom(src => src.Tipo))
                 .ForMember(dst => dst.Id, map => map.MapFrom(src => src.ProdutoId))
-                .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)));
+                .ForMember(dst => dst.FornecedorId, map => map.MapFrom(src => Guid.Parse(src.FornecedorId)))
+                .ForMember(dst => dst.MenuId, map => map.MapFrom(src => Guid.Parse(src.MenuId)));
 
             _ = CreateMap<Fornecedor, FornecedorDto>();
 

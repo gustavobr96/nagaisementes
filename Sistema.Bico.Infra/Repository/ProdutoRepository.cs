@@ -21,7 +21,8 @@ namespace Sistema.Bico.Infra.Repository
         public async Task<List<Produto>> ObterTodosProdutoEFornecedor()
         {
             return await _context.Produto
-                  .Include(i => i.Fornecedor).ToListAsync();
+                  .Include(i => i.Fornecedor)
+                  .Include(i => i.Menu).ToListAsync();
         }
     }
 

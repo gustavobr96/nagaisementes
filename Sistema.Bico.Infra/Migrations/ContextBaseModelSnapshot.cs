@@ -255,8 +255,8 @@ namespace Sistema.Bico.Infra.Migrations
                     b.Property<byte[]>("FotoBase64")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("Lote")
-                        .HasColumnType("int");
+                    b.Property<string>("Lote")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("MenuId")
                         .HasColumnType("uniqueidentifier");

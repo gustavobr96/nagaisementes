@@ -14,15 +14,18 @@ namespace SistemaBico.API.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IMenuRepository _menuRepository;
         private readonly IMapper _mapper;
 
         public HomeController(ILogger<HomeController> logger,
             IProdutoRepository produtoRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IMenuRepository menuRepository)
         {
             _logger = logger;
             _produtoRepository = produtoRepository;
             _mapper = mapper;
+            _menuRepository = menuRepository;
         }
 
 
@@ -34,14 +37,22 @@ namespace SistemaBico.API.Controllers
         public async Task<IActionResult> Index()
         {
             var produtos = await ObterProdutos();
-            var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
+            var menus = await ObterMenus();
 
-            return View("index", new ListResponseRazor { Produtos = produtosDto });
+            var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos);
+            var menusDto = _mapper.Map<List<MenuDto>>(menus);
+
+            return View("index", new ListResponseRazor { Produtos = produtosDto, Menus = menusDto });
         }
 
         private async Task<List<Produto>> ObterProdutos()
         {
             return await _produtoRepository.GetAll(x => x.Ativo);
         }
+        private async Task<List<Menu>> ObterMenus()
+        {
+            return await _menuRepository.GetAll(x => x.Ativo);
+        }
+
     }
 }

@@ -19,7 +19,10 @@ namespace SistemaBico.API.Dtos
         public decimal ValorUnitarioCompra { get; set; }
         public int Tetrazolio { get; set; }
         public string FornecedorId { get; set; }
+        public string MenuId { get; set; }
         public string FornecedorName { get; set; }
+        public string MenuName { get; set; }
+        public string Lote { get; set; }
         public string Observacao { get; set; }
         public bool Ativo { get; set; }
         public IFormFile File { get; set; }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Sistema.Bico.Domain.Command;
 using Sistema.Bico.Domain.Command.Menu;
 using Sistema.Bico.Domain.Command.Produto;
 using Sistema.Bico.Domain.Entities;
@@ -107,6 +108,27 @@ namespace SistemaBico.API.Controllers
             catch (Exception e)
             {
                 return RedirectToAction("Index", "Erro", new { area = "" });
+            }
+        }
+
+        [Route("ativarDesativar")]
+        public async Task<IActionResult> AtivarDesativar([FromBody] string id)
+        {
+            try
+            {
+                var desativarAtivarCommand = new AtivarEDesativarMenuCommand { MenuId = Guid.Parse(id) };
+                var model = await _mediator.Send(desativarAtivarCommand);
+                if (model.IsSuccess)
+                {
+
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false });
             }
         }
 

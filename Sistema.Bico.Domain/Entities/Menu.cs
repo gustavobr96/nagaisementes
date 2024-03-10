@@ -12,5 +12,10 @@ namespace Sistema.Bico.Domain.Entities
             Nome = nome;
             Update = DateTime.Now;
         }
+
+        public void AtivarDesativar()
+        {
+            Ativo = Ativo ? false : true;
+        }
     }
 }
