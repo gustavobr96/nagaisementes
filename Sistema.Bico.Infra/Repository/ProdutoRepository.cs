@@ -28,21 +28,27 @@ namespace Sistema.Bico.Infra.Repository
 
         public async Task<(int, List<Produto>)> ObterProdutoPaginado(int page, int take, string pesquisar = null, Guid? menuID = null)
         {
-            var listaProdutos = await _context.Produto
-                 .Include(i => i.Fornecedor)
-                 .Include(i => i.Menu)
-                 .AsNoTracking()
-                 .ToListAsync();
+            var query = _context.Produto
+         .Include(i => i.Fornecedor)
+         .Include(i => i.Menu)
+         .AsNoTracking();
 
-            if (!string.IsNullOrEmpty(pesquisar)) listaProdutos.Where(x => x.Nome.Contains(pesquisar));
+            if (!string.IsNullOrEmpty(pesquisar))
+            {
+                query = query.Where(x => x.Nome.Contains(pesquisar));
+            }
 
-            if (menuID != null) listaProdutos.Where(x => x.MenuId == menuID);
+            if (menuID != null)
+            {
+                query = query.Where(x => x.MenuId == menuID);
+            }
 
-            var count = listaProdutos.Count();
+            var count = await query.CountAsync();
 
-            listaProdutos
-             .Skip((page - 1) * take)
-             .Take(take);
+            var listaProdutos = await query
+                .Skip((page - 1) * take)
+                .Take(take)
+                .ToListAsync();
 
             return (count, listaProdutos);
         }

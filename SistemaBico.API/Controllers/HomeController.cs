@@ -81,7 +81,7 @@ namespace SistemaBico.API.Controllers
             var produtosDto = _mapper.Map<List<ProdutoDto>>(produtos.Item2);
             var menusDto = _mapper.Map<List<MenuDto>>(menus);
 
-            var paginacao = new PaginacaoRazorDto { CountRegister = produtos.Item1, PagesSize = (int)pagesSize };
+            var paginacao = new PaginacaoRazorDto { CountRegister = produtos.Item1, PagesSize = (int)pagesSize, Page = page };
             return View("index", new ListResponseRazor { Produtos = produtosDto, Menus = menusDto, Paginacao = paginacao });
         }
 

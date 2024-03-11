@@ -10448,7 +10448,6 @@ h4.sub-title {
 
 .form-12 .form-top {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-column-gap: 30px; }
 
 .form-12 .column1 {
@@ -10755,7 +10754,8 @@ h4.sub-title {
   background: #1a9ddb; }
 
 .grids-4 li.open-1 {
-  background: #32bf13; }
+    background: #02ad88;
+}
 
 .grids-4 li.sale {
   background: #b513c4; }
@@ -11507,8 +11507,7 @@ h4.sub-title {
   grid-gap: 100px;
   margin-top: 60px; }
 
-.w3l-footer-29-main .main-social-footer-29 {
-  margin-top: 20px; }
+.w3l-footer-29-main .main-social-footer-29 { }
 
 .w3l-footer-29-main .bottom-copies {
   border-top: 1px solid #454545;
