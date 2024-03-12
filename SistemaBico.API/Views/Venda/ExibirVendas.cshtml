@@ -58,8 +58,8 @@
                             <td>@item.Produto.Nome</td>
                             <td>@item.Produto.TipoProduto</td>
                             <td>@String.Format("{0:#,##0}", decimal.Parse(item.QuantidadeVendida.ToString().Replace(",", "."), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))) </td>
-                            <td>@String.Format("{0:#,##0}", item.ValorCompraUnitario)</td>
-                            <td>@String.Format("{0:#,##0}", item.ValorVendaUnitario)</td>
+                            <td>@String.Format("{0:0.000}", item.ValorCompraUnitario)</td>
+                            <td>@String.Format("{0:0.000}", item.ValorVendaUnitario)</td>
                             <td>@item.Produto.Pureza%</td>
                             <td>@item.Produto.Tetrazolio%</td>
                             <td>@item.Produto.Lote</td>

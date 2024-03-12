@@ -23,6 +23,25 @@
     <link rel="stylesheet" href="assets/css/style-liberty.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="/img/fav.png" />
+    <style>
+        .logo {
+            font-family: 'Arial', sans-serif; /* Você pode ajustar a fonte conforme necessário */
+            color: white; /* Cor do texto */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        .nj {
+            font-weight: bold; /* Define a espessura da fonte */
+            font-size: 24px; /* Tamanho da fonte para "NJ" */
+            margin-bottom: -10px; /* Aproxima "NJ" de "Agronegócios" */
+        }
+
+        .agro {
+            font-size: 16px; /* Tamanho da fonte para "Agronegócios" */
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -34,7 +53,11 @@
             <div class="container">
                 <header class="row align-items-center justify-content-between">
                     <div class="social-top col-lg-3 col-6">
-                        <img src="~/img/logo2.png" alt="NJ Agronegócios">
+                        <div class="logo">
+                            <span class="nj">NJ</span>
+                            <br>
+                            <span class="agro">AGRONEGÓCIOS</span>
+                        </div>
                     </div>
                     <div class="accounts col-lg-9 col-6">
                         <a href="@Url.Action("Index", "Login")" style="color: white">Entrar</a>
