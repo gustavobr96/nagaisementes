@@ -12,7 +12,7 @@ using Sistema.Bico.Infra.Context;
 namespace Sistema.Bico.Infra.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240310191502_1")]
+    [Migration("20240312114300_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -323,11 +323,11 @@ namespace Sistema.Bico.Infra.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("ValorCompraUnitario")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("ValorCompraUnitario");
 
                     b.Property<decimal>("ValorVendaUnitario")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("ValorVendaUnitario");
 
                     b.HasKey("Id")

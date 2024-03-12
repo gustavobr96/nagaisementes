@@ -29,10 +29,11 @@ namespace Sistema.Bico.Infra.Repository
         public async Task<(int, List<Produto>)> ObterProdutoPaginado(int page, int take, string pesquisar = null, Guid? menuID = null)
         {
             var query = _context.Produto
-         .Include(i => i.Fornecedor)
-         .Include(i => i.Menu)
-         .AsNoTracking();
-
+            .Include(i => i.Fornecedor)
+            .Include(i => i.Menu)
+            .Where(w => w.Ativo)
+            .AsNoTracking();
+    
             if (!string.IsNullOrEmpty(pesquisar))
             {
                 query = query.Where(x => x.Nome.Contains(pesquisar));

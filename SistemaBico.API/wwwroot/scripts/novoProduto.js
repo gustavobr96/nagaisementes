@@ -5,7 +5,7 @@
         autoGroup: true,
         groupSeparator: '.',
         radixPoint: ',',  // Use ponto como separador decimal
-        digits: 2,        // Define a quantidade de casas decimais
+        digits: 3,        // Define a quantidade de casas decimais
         digitsOptional: false,
         placeholder: '0',
         numericInput: true,
@@ -44,7 +44,6 @@
         groupSeparator: '', // Não usar separador de milhares
         groupSize: 3 // Tamanho do grupo
     });
-
 
     $('#txtValorTotal').inputmask({
         alias: 'numeric',

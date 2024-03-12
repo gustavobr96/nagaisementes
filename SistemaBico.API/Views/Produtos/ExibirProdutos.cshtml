@@ -50,7 +50,7 @@
                             <td>@item.Nome</td>
                             <td>@item.TipoProduto</td>
                             <td>@String.Format("{0:#,##0}", decimal.Parse(item.Quantidade.ToString().Replace(",", "."), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))) </td>
-                            <td>@String.Format("{0:C}", item.ValorUnitarioCompra)</td>
+                            <td>@String.Format("{0:#,##0}", item.ValorUnitarioCompra)</td>
                             <td>@item.Pureza%</td>
                             <td>@item.Tetrazolio%</td>
                             <td>@item.FornecedorName</td>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Valor Unitário(R$)</label>
-                            <input type="text" class="form-control" name="txtValor" id="txtValor"  maxlength="4" disabled />
+                            <input type="text" class="form-control" name="txtValor" id="txtValor"  maxlength="6" disabled />
                         </div>
                         <div class="form-group col-md-3">
                             <label>Valor Total(R$)</label>

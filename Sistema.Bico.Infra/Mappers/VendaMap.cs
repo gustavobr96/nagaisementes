@@ -17,8 +17,8 @@ namespace Sistema.Bico.Infra.Mappers
             builder.HasKey(x => new { x.Id }).HasName($"PK_{NOME_TABELA}");
 
             builder.Property(x => x.QuantidadeVendida) .HasColumnType("decimal(18, 3)").HasColumnName("QuantidadeVendida");
-            builder.Property(x => x.ValorVendaUnitario).HasColumnType("decimal(18, 2)").HasColumnName("ValorVendaUnitario");
-            builder.Property(x => x.ValorCompraUnitario).HasColumnType("decimal(18, 2)").HasColumnName("ValorCompraUnitario");
+            builder.Property(x => x.ValorVendaUnitario).HasColumnType("decimal(18, 3)").HasColumnName("ValorVendaUnitario");
+            builder.Property(x => x.ValorCompraUnitario).HasColumnType("decimal(18, 3)").HasColumnName("ValorCompraUnitario");
 
             builder.HasOne(x => x.Produto).WithMany().HasForeignKey(x => x.ProdutoId).OnDelete(DeleteBehavior.Restrict);
         }

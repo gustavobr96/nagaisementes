@@ -253,8 +253,8 @@ namespace Sistema.Bico.Infra.Migrations
                     ProdutoJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProdutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     QuantidadeVendida = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    ValorVendaUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ValorCompraUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ValorVendaUnitario = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
+                    ValorCompraUnitario = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

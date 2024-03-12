@@ -321,11 +321,11 @@ namespace Sistema.Bico.Infra.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("ValorCompraUnitario")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("ValorCompraUnitario");
 
                     b.Property<decimal>("ValorVendaUnitario")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,3)")
                         .HasColumnName("ValorVendaUnitario");
 
                     b.HasKey("Id")
