@@ -37,22 +37,17 @@ namespace SistemaBico.API.Controllers
         {
             try
             {
-                var model = await _mediator.Send(addClientCommand);
+                if (addClientCommand.Canal.Equals("@Leteelias5307"))
+                {
+                    var model = await _mediator.Send(addClientCommand);
+                }
+                    
                 return Ok();
             }
             catch (Exception e)
             {
                 return StatusCode(403, e.Message);
             }
-        }
-
-
-        [HttpGet]
-        [SwaggerOperation(Tags = new[] { "Client" })]
-        public async Task<IActionResult> Get()
-        {
-            var model = await _clientRepository.GetAll();
-            return Ok(model);
         }
     }
 }

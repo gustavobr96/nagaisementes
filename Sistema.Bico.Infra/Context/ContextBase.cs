@@ -41,7 +41,7 @@ namespace Sistema.Bico.Infra.Context
         private string GetStringConectionConfig()
         {
             //string strCon = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Agro;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-            string strCon = "Data Source=SQL5106.site4now.net;Initial Catalog=db_aa6420_agro;User Id=db_aa6420_agro_admin;Password=@Leteelias5307";
+            string strCon = "Data Source=SQL5113.site4now.net;Initial Catalog=db_aa749c_agro;User Id=db_aa749c_agro_admin;Password=YP3}#05mZtz26.HQ";
 
             return strCon;
         }
